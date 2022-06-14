@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recrutment_help_app/core/constant/color.dart';
 
 // ignore: must_be_immutable
 class PassTxtFormField extends StatefulWidget {
@@ -62,7 +63,7 @@ class _PassTxtFormFieldState extends State<PassTxtFormField> {
           icon: Icon(
             // Based on passwordVisible state choose the icon
             passwordVisible ? Icons.visibility : Icons.visibility_off,
-            color: Theme.of(context).primaryColorDark,
+            color: ksecondaryColor,
           ),
           onPressed: () {
             // Update the state i.e. toogle the state of passwordVisible variable

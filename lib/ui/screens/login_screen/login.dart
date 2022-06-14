@@ -1,6 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+
 import 'package:recrutment_help_app/core/constant/color.dart';
 import 'package:recrutment_help_app/ui/screens/login_screen/login_view_model.dart';
 
@@ -36,7 +38,7 @@ class LoginScreen extends StatelessWidget {
                       Text(
                         'Login',
                         style: TextStyle(
-                          color: primaryColor,
+                          color: kprimaryColor,
                           fontFamily: 'Poppins',
                           fontSize: 32.sp,
                           fontWeight: FontWeight.bold,
@@ -48,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                       Text(
                         'Please Sign In to continue',
                         style: TextStyle(
-                          color: secondaryColor,
+                          color: ksecondaryColor,
                           fontSize: 18.sp,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500,
@@ -72,7 +74,66 @@ class LoginScreen extends StatelessWidget {
                         errorText: 'Invalid Password',
                         prefixicon: Icons.email_outlined,
                         keyboardType: TextInputType.emailAddress,
+                        validation: value.passwordValidation,
                       ),
+                      SizedBox(
+                        height: 17.h,
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          'Forget Password?',
+                          style: TextStyle(
+                            color: kprimaryColor,
+                            fontFamily: 'Poppins',
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w100,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 38.h,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            value.logInModel.email = value.logInModel.email;
+                            value.logInModel.password =
+                                value.logInModel.password;
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: kprimaryColor,
+                          onPrimary: Colors.white,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.r)),
+                          minimumSize: Size(369.w, 57.h),
+                          alignment: Alignment.center,
+                        ),
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 26.h,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'or login with',
+                          style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 14.sp,
+                              color: ksecondaryColor),
+                        ),
+                      )
                     ],
                   ),
                 )
@@ -94,13 +155,13 @@ class TxtFormField extends StatelessWidget {
   final Function(String)? onChanged;
 
   TxtFormField({
+    Key? key,
+    this.hintText,
     this.errorText,
     this.keyboardType,
-    this.hintText,
-    this.onChanged,
     this.prefixicon,
     this.validation,
-    Key? key,
+    this.onChanged,
   }) : super(key: key);
 
   @override
