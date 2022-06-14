@@ -5,7 +5,7 @@ class LoginViewModel extends ChangeNotifier {
   LogInModel logInModel = LogInModel();
   String? emailValidation(String? value) {
     if (value!.isEmpty) {
-      return 'Please Enter Your Name';
+      return 'Please Enter Your Email';
     }
     if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
       return ("Please enter a valid email");

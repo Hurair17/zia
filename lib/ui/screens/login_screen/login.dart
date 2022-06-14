@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import 'package:recrutment_help_app/core/constant/color.dart';
@@ -23,8 +24,11 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                   height: 176.h,
+                  width: double.infinity,
+                  child: SvgPicture.asset('assets/auth_screen_design.svg',
+                      fit: BoxFit.cover),
                 ),
                 SizedBox(
                   height: 46.h,
@@ -59,22 +63,38 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         height: 59.h,
                       ),
-                      TxtFormField(
-                        hintText: 'Email or Phone Number',
-                        errorText: 'Invalid email',
-                        prefixicon: Icons.email_outlined,
-                        keyboardType: TextInputType.emailAddress,
-                        validation: value.emailValidation,
-                      ),
-                      SizedBox(
-                        height: 24.h,
-                      ),
-                      PassTxtFormField(
-                        hintText: 'Password',
-                        errorText: 'Invalid Password',
-                        prefixicon: Icons.email_outlined,
-                        keyboardType: TextInputType.emailAddress,
-                        validation: value.passwordValidation,
+                      Form(
+                        key: formKey,
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TxtFormField(
+                                hintText: 'Email or Phone Number',
+                                // errorText: 'Invalid email',
+                                prefixicon: Icons.email_outlined,
+                                keyboardType: TextInputType.emailAddress,
+                                validation: value.emailValidation,
+                                onChanged: (val) {
+                                  value.logInModel.email = val;
+                                },
+                              ),
+                              SizedBox(
+                                height: 24.h,
+                              ),
+                              PassTxtFormField(
+                                hintText: 'Password',
+                                // errorText: 'Invalid Password',
+                                prefixicon: Icons.email_outlined,
+                                keyboardType: TextInputType.emailAddress,
+                                validation: value.passwordValidation,
+                                onChanged: (val) {
+                                  value.logInModel.password = val;
+                                },
+                                control: TextEditingController(
+                                    text: value.logInModel.password),
+                              ),
+                            ]),
                       ),
                       SizedBox(
                         height: 17.h,
@@ -97,9 +117,8 @@ class LoginScreen extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
-                            value.logInModel.email = value.logInModel.email;
-                            value.logInModel.password =
-                                value.logInModel.password;
+                          } else {
+                            print('error');
                           }
                         },
                         style: ElevatedButton.styleFrom(
@@ -133,7 +152,23 @@ class LoginScreen extends StatelessWidget {
                               fontSize: 14.sp,
                               color: ksecondaryColor),
                         ),
-                      )
+                      ),
+                      SizedBox(
+                        height: 26.h,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            LoginScreenEvletedBtnForSocialSites(
+                              path: 'assets/apple.svg',
+                            ),
+                            LoginScreenEvletedBtnForSocialSites(
+                              path: 'assets/google.svg',
+                            ),
+                            LoginScreenEvletedBtnForSocialSites(
+                              path: 'assets/facebook.svg',
+                            ),
+                          ])
                     ],
                   ),
                 )
@@ -142,6 +177,31 @@ class LoginScreen extends StatelessWidget {
           ),
         );
       }),
+    );
+  }
+}
+
+class LoginScreenEvletedBtnForSocialSites extends StatelessWidget {
+  final String path;
+  const LoginScreenEvletedBtnForSocialSites({
+    required this.path,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+        primary: ksecondaryColorForBack,
+        onPrimary: Colors.white,
+        elevation: 0,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+        minimumSize: Size(105.w, 56.h),
+        alignment: Alignment.center,
+      ),
+      child: SvgPicture.asset(path),
     );
   }
 }
@@ -167,9 +227,15 @@ class TxtFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validation,
       decoration: InputDecoration(
         errorText: errorText,
         errorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.red,
+          ),
+        ),
+        focusedErrorBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.red,
           ),

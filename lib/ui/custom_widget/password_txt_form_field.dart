@@ -10,8 +10,10 @@ class PassTxtFormField extends StatefulWidget {
   IconData? prefixicon;
   final String? Function(String?)? validation;
   final Function(String)? onChanged;
+  TextEditingController? control;
 
   PassTxtFormField({
+    this.control,
     this.errorText,
     this.keyboardType,
     this.hintText,
@@ -26,15 +28,23 @@ class PassTxtFormField extends StatefulWidget {
 }
 
 class _PassTxtFormFieldState extends State<PassTxtFormField> {
-  @override
   bool passwordVisible = false;
 
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.control,
+      validator: widget.validation,
+      onChanged: widget.onChanged,
       obscureText: passwordVisible,
       decoration: InputDecoration(
         errorText: widget.errorText,
         errorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.red,
+          ),
+        ),
+        focusedErrorBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.red,
           ),
