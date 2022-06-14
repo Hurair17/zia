@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="129" height="213.585" viewBox="0 0 129 213.585">
+  <g id="Group_98" data-name="Group 98" transform="translate(-150 -357)">
+    <g id="Group_97" data-name="Group 97" transform="translate(172 357)">
+      <path id="Path_255" data-name="Path 255" d="M387.337,195.566l-14.046,14.047-14.046-14.047a42.243,42.243,0,0,0-28.263,39.857c0,35.866,42.234,76.659,42.234,76.659h.151S415.6,271.29,415.6,235.423A42.244,42.244,0,0,0,387.337,195.566Zm-5.9,81.611c-2.775,3.884-5.571,7.447-8.145,10.551-2.574-3.1-5.37-6.667-8.145-10.551-11.426-15.991-17.719-30.819-17.719-41.753a25.817,25.817,0,0,1,25.788-25.788h.151a25.817,25.817,0,0,1,25.788,25.788C399.155,246.357,392.862,261.186,381.436,277.177Z" transform="translate(-330.982 -157.765)" fill="#0f5a83"/>
+      <path id="Path_256" data-name="Path 256" d="M400.525,258.488l-9.766,9.766-9.766-9.766,9.766-41.308Z" transform="translate(-348.449 -165.314)"/>
+      <g id="Group_96" data-name="Group 96" transform="translate(27.225)">
+        <path id="Path_257" data-name="Path 257" d="M387.933,175.676c-9.194-.3-13.121-13.583-14.715-21.479-2.249-11.139,5.336-16.792,14.715-16.714,9.576-.25,16.723,5.661,14.716,16.714C401.214,162.1,397.02,175.37,387.933,175.676Z" transform="translate(-372.819 -137.475)"/>
+      </g>
+    </g>
+    <text id="RECRUITING" transform="translate(150 549.057)" fill="#1a1818" font-size="21" font-family="Poppins-ExtraBold, Poppins" font-weight="800"><tspan x="0" y="0">RECRUITING</tspan></text>
+    <text id="Help" transform="translate(247 565.585)" fill="#1a1818" font-size="14" font-family="Poppins-Regular, Poppins"><tspan x="0" y="0">Help</tspan></text>
+  </g>
+</svg>
