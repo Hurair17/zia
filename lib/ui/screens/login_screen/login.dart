@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -158,7 +158,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
+                          children: const [
                             LoginScreenEvletedBtnForSocialSites(
                               path: 'assets/apple.svg',
                             ),
@@ -168,7 +168,33 @@ class LoginScreen extends StatelessWidget {
                             LoginScreenEvletedBtnForSocialSites(
                               path: 'assets/facebook.svg',
                             ),
-                          ])
+                          ]),
+                      SizedBox(
+                        height: 43.h,
+                      ),
+                      Center(
+                        child: RichText(
+                          text: TextSpan(children: <TextSpan>[
+                            TextSpan(
+                              text: 'Don\'t have an account.',
+                              style: TextStyle(
+                                  color: ksecondaryColor,
+                                  fontFamily: 'Poppins',
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                            TextSpan(
+                                text: ' Sign Up',
+                                style: TextStyle(
+                                    color: kprimaryColor,
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w700),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {}),
+                          ]),
+                        ),
+                      )
                     ],
                   ),
                 )
