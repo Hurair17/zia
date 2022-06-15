@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, child) {
-        return Material(child: SafeArea(child: SplashScreen()));
+        return const Material(child: SafeArea(child: SplashScreen()));
       },
     );
   }
