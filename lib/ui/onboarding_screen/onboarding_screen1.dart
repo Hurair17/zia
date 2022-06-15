@@ -12,19 +12,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   late SharedPreferences preferences;
   @override
   void initState() {
-    init();
+    // setVisitingFlag();
     super.initState();
-  }
-
-  Future init() async {
-    final preferences = await SharedPreferences.getInstance();
-    preferences.setBool('key', true);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text('Screen 1'),
+    return const Scaffold(
+      body: Center(child: Text('Obboarding Screen 1')),
     );
   }
 }
