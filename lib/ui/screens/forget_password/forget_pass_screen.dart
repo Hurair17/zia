@@ -69,6 +69,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                         //   value.logInModel.email = val;
                         // },
                       ),
+                      SizedBox(
+                        height: 28.h,
+                      ),
                       ElevatedButton(
                         onPressed: () {
                           // if (formKey.currentState!.validate()) {
