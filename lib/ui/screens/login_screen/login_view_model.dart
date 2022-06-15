@@ -13,8 +13,13 @@ class LoginViewModel extends ChangeNotifier {
   }
 
   String? passwordValidation(String? value) {
-    if (value!.isEmpty) {
-      return 'Please Enter Your Password';
+    String pattern =
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+    RegExp regExp = RegExp(pattern);
+    if (regExp.hasMatch(value!)) {
+      return null;
+    } else {
+      return "must have upper, lower, spical ch, num ";
     }
   }
 }
