@@ -5,7 +5,7 @@ import 'package:recrutment_help_app/ui/screens/login_screen/login.dart';
 import 'package:recrutment_help_app/ui/screens/splash_screen/splash_screen.dart';
 
 void main() {
-  runApp(const GetMaterialApp(home: MyApp()));
+  runApp(const GetMaterialApp(home: SafeArea(child: MyApp())));
 }
 
 class MyApp extends StatelessWidget {

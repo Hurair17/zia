@@ -28,7 +28,7 @@ class PassTxtFormField extends StatefulWidget {
 }
 
 class _PassTxtFormFieldState extends State<PassTxtFormField> {
-  bool passwordVisible = false;
+  bool passwordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,7 @@ class _PassTxtFormFieldState extends State<PassTxtFormField> {
         suffixIcon: IconButton(
           icon: Icon(
             // Based on passwordVisible state choose the icon
-            passwordVisible ? Icons.visibility : Icons.visibility_off,
+            passwordVisible ? Icons.visibility_off : Icons.visibility,
             color: ksecondaryColor,
           ),
           onPressed: () {
