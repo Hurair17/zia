@@ -1,6 +1,6 @@
-class LogInModel {
+class SignUpModel {
   String? fullName;
   String? email;
   String? password;
-  LogInModel({this.email, this.password});
+  SignUpModel({this.email, this.password});
 }
