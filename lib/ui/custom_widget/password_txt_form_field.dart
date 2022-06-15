@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recrutment_help_app/core/constant/color.dart';
 
 // ignore: must_be_immutable
@@ -7,7 +8,8 @@ class PassTxtFormField extends StatefulWidget {
   String? hintText;
   String? errorText;
   TextInputType? keyboardType;
-  IconData? prefixicon;
+  // IconData? prefixicon;
+  String iconpath;
   final String? Function(String?)? validation;
   final Function(String)? onChanged;
   TextEditingController? control;
@@ -18,7 +20,7 @@ class PassTxtFormField extends StatefulWidget {
     this.keyboardType,
     this.hintText,
     this.onChanged,
-    this.prefixicon,
+    required this.iconpath,
     this.validation,
     Key? key,
   }) : super(key: key);
@@ -55,11 +57,15 @@ class _PassTxtFormFieldState extends State<PassTxtFormField> {
           fontSize: 14.sp,
           fontFamily: 'Poppins',
         ),
-        prefixIcon: Icon(
-          widget.prefixicon,
-          size: 30.h,
-          color: const Color(0xFF8E8E8E).withOpacity(0.5),
+        prefixIcon: SvgPicture.asset(
+          widget.iconpath,
+          fit: BoxFit.scaleDown,
         ),
+        // Icon(
+        //   widget.prefixicon,
+        //   size: 30.h,
+        //   color: const Color(0xFF8E8E8E).withOpacity(0.5),
+        // ),
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(5.r)),

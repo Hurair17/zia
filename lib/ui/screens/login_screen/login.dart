@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import 'package:recrutment_help_app/core/constant/color.dart';
+import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_screen.dart';
 import 'package:recrutment_help_app/ui/screens/login_screen/login_view_model.dart';
 import 'package:recrutment_help_app/ui/screens/signup_screen/signup_screen.dart';
 
@@ -32,7 +33,8 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: 176.h,
                     width: double.infinity,
-                    child: SvgPicture.asset('assets/auth_screen_design.svg',
+                    child: SvgPicture.asset(
+                        'assets/icons/auth_screen_design.svg',
                         fit: BoxFit.cover),
                   ),
                   SizedBox(
@@ -77,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                                 TxtFormField(
                                   hintText: 'Email or Phone Number',
                                   // errorText: 'Invalid email',
-                                  prefixicon: Icons.email_outlined,
+                                  prefixicon: 'assets/icons/email_icon.svg',
                                   keyboardType: TextInputType.emailAddress,
                                   validation: value.emailValidation,
                                   onChanged: (val) {
@@ -90,7 +92,7 @@ class LoginScreen extends StatelessWidget {
                                 PassTxtFormField(
                                   hintText: 'Password',
                                   // errorText: 'Invalid Password',
-                                  prefixicon: Icons.email_outlined,
+                                  iconpath: 'assets/icons/pass_lock_icon.svg',
                                   keyboardType: TextInputType.emailAddress,
                                   validation: value.passwordValidation,
                                   onChanged: (val) {
@@ -106,13 +108,18 @@ class LoginScreen extends StatelessWidget {
                         ),
                         Align(
                           alignment: Alignment.centerRight,
-                          child: Text(
-                            'Forget Password?',
-                            style: TextStyle(
-                              color: kprimaryColor,
-                              fontFamily: 'Poppins',
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w100,
+                          child: GestureDetector(
+                            onTap: () {
+                              // Get.to(ForgetPasswordScreen());
+                            },
+                            child: Text(
+                              'Forget Password?',
+                              style: TextStyle(
+                                color: kprimaryColor,
+                                fontFamily: 'Poppins',
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w100,
+                              ),
                             ),
                           ),
                         ),
@@ -165,13 +172,13 @@ class LoginScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: const [
                               LoginScreenEvletedBtnForSocialSites(
-                                path: 'assets/apple.svg',
+                                path: 'assets/icons/apple.svg',
                               ),
                               LoginScreenEvletedBtnForSocialSites(
-                                path: 'assets/google.svg',
+                                path: 'assets/icons/google.svg',
                               ),
                               LoginScreenEvletedBtnForSocialSites(
-                                path: 'assets/facebook.svg',
+                                path: 'assets/icons/facebook.svg',
                               ),
                             ]),
                         SizedBox(

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TxtFormField extends StatelessWidget {
   String? hintText;
   String? errorText;
   TextInputType? keyboardType;
-  IconData? prefixicon;
+  String prefixicon;
   final String? Function(String?)? validation;
   final Function(String)? onChanged;
 
@@ -14,7 +15,7 @@ class TxtFormField extends StatelessWidget {
     this.hintText,
     this.errorText,
     this.keyboardType,
-    this.prefixicon,
+    required this.prefixicon,
     this.validation,
     this.onChanged,
   }) : super(key: key);
@@ -41,10 +42,9 @@ class TxtFormField extends StatelessWidget {
           fontSize: 14.sp,
           fontFamily: 'Poppins',
         ),
-        prefixIcon: Icon(
+        prefixIcon: SvgPicture.asset(
           prefixicon,
-          size: 30.h,
-          color: const Color(0xFF8E8E8E).withOpacity(0.5),
+          fit: BoxFit.scaleDown,
         ),
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide.none,
