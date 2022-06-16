@@ -3,17 +3,26 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
+import 'package:recrutment_help_app/ui/custom_widget/otp.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_view_model.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/otp_verify_screen.dart';
 
 import '../../../core/constant/color.dart';
 import '../../custom_widget/down_elevated_btn.dart';
 
-class OtpScreen extends StatelessWidget {
+class OtpScreen extends StatefulWidget {
   OtpScreen({Key? key}) : super(key: key);
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  @override
+  State<OtpScreen> createState() => _OtpScreenState();
+}
+
+class _OtpScreenState extends State<OtpScreen> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController textEditingController = TextEditingController();
+  String currentText = "";
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ForgetPassViewModel>(
@@ -68,33 +77,34 @@ class OtpScreen extends StatelessWidget {
                           key: formKey,
                           child: Column(
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  OtpTextField(
-                                    validation: value.oTPValidation,
-                                  ),
-                                  OtpTextField(
-                                    validation: value.oTPValidation,
-                                    // control: TextEditingController(
-                                    //   text: value.logInModel.password),
-                                  ),
-                                  OtpTextField(
-                                    validation: value.oTPValidation,
-                                  ),
-                                  OtpTextField(
-                                    validation: value.oTPValidation,
-                                  ),
-                                ],
-                              ),
+                              //   Row(
+                              //     mainAxisAlignment:
+                              //         MainAxisAlignment.spaceBetween,
+                              //     children: [
+                              //       OtpTextField(
+                              //         validation: value.oTPValidation,
+                              //       ),
+                              //       OtpTextField(
+                              //         validation: value.oTPValidation,
+                              //         // control: TextEditingController(
+                              //         //   text: value.logInModel.password),
+                              //       ),
+                              //       OtpTextField(
+                              //         validation: value.oTPValidation,
+                              //       ),
+                              //       OtpTextField(
+                              //         validation: value.oTPValidation,
+                              //       ),
+                              //     ],
+                              //   ),
+                              FilledRoundedPinPut(),
                               SizedBox(
                                 height: 28.h,
                               ),
 
                               //Button to verify otp
                               DownElevetedButton(
-                                formKey: formKey,
+                                // formKey: formKey,
                                 link: VerifyScreen(),
                                 buttonText: 'Verify Code',
                               ),

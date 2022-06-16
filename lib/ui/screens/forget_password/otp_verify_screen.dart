@@ -18,6 +18,7 @@ class VerifyScreen extends StatelessWidget {
             children: [
               SizedBox(
                 height: 176.h,
+                width: double.infinity,
                 child: SvgPicture.asset('assets/icons/auth_screen_design.svg',
                     fit: BoxFit.cover),
               ),

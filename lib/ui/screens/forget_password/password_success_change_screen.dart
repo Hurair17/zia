@@ -18,6 +18,7 @@ class PasswordChangeSuccessfully extends StatelessWidget {
             children: [
               SizedBox(
                 height: 176.h,
+                width: double.infinity,
                 child: SvgPicture.asset('assets/icons/auth_screen_design.svg',
                     fit: BoxFit.cover),
               ),
@@ -65,7 +66,6 @@ class PasswordChangeSuccessfully extends StatelessWidget {
                 height: 130.h,
               ),
               DownElevetedButton(
-                // formKey: formKey,
                 link: LoginScreen(),
                 buttonText: 'Log In',
               ),

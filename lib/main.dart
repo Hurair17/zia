@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:recrutment_help_app/ui/screens/login_screen/login.dart';
 import 'package:recrutment_help_app/ui/screens/splash_screen/splash_screen.dart';
 
 void main() {
