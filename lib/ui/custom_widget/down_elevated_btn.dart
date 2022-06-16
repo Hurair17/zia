@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/constant/color.dart';
 
 class DownElevetedButton extends StatelessWidget {
-  const DownElevetedButton({
+  DownElevetedButton({
     Key? key,
     this.formKey,
     this.link,

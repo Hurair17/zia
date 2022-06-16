@@ -64,7 +64,7 @@ class VerifyScreen extends StatelessWidget {
               SizedBox(
                 height: 130.h,
               ),
-              const DownElevetedButton(
+              DownElevetedButton(
                 // formKey: formKey,
                 link: ResetPasswordScreen(),
                 buttonText: 'Reset Password',
