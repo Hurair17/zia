@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recrutment_help_app/core/constant/color.dart';
+import 'package:recrutment_help_app/ui/screens/forget_password/reset_password_screen.dart';
 
 import '../../custom_widget/down_elevated_btn.dart';
 
@@ -63,9 +64,9 @@ class VerifyScreen extends StatelessWidget {
               SizedBox(
                 height: 130.h,
               ),
-              DownElevetedButton(
+              const DownElevetedButton(
                 // formKey: formKey,
-                link: VerifyScreen(),
+                link: ResetPasswordScreen(),
                 buttonText: 'Reset Password',
               ),
             ],

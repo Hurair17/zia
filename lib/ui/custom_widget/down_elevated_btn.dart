@@ -20,9 +20,14 @@ class DownElevetedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        if (formKey!.currentState!.validate()) {
+        if (formKey == null) {
+          // return null;
           Get.to(link);
-        } else {}
+        } else {
+          if (formKey!.currentState!.validate()) {
+            Get.to(link);
+          } else {}
+        }
       },
       style: ElevatedButton.styleFrom(
         primary: kprimaryColor,
