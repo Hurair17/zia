@@ -95,6 +95,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.r)),
                                 minimumSize: Size(369.w, 57.h),
+                                maximumSize: Size(
+                                    MediaQuery.of(context).size.width,
+                                    MediaQuery.of(context).size.height),
                                 alignment: Alignment.center,
                               ),
                               child: Text(
