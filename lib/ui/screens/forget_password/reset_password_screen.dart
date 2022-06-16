@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_view_model.dart';
+import 'package:recrutment_help_app/ui/screens/forget_password/password_success_change_screen.dart';
 
 import '../../../core/constant/color.dart';
 import '../../custom_widget/down_elevated_btn.dart';
@@ -91,7 +92,7 @@ class ResetPasswordScreen extends StatelessWidget {
                             ),
                             DownElevetedButton(
                               formKey: formKey,
-                              link: ResetPasswordScreen(),
+                              link: PasswordChangeSuccessfully(),
                               buttonText: 'Reset Password',
                             ),
                           ],
