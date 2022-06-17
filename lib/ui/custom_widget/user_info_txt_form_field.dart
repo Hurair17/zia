@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../core/constant/color.dart';
+
 class TxtFormField extends StatelessWidget {
   String? hintText;
   String? errorText;
@@ -22,41 +24,58 @@ class TxtFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      validator: validation,
-      decoration: InputDecoration(
-        errorText: errorText,
-        errorBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.red,
+    return Stack(
+      children: [
+        Container(
+          height: 73.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: kshadowColor.withOpacity(0.07),
+                blurRadius: 2.r,
+                offset: Offset(0, 3.h),
+              ),
+            ],
           ),
         ),
-        focusedErrorBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.red,
+        TextFormField(
+          validator: validation,
+          decoration: InputDecoration(
+            errorText: errorText,
+            errorBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.red,
+              ),
+            ),
+            focusedErrorBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.red,
+              ),
+            ),
+            hintText: hintText,
+            hintStyle: TextStyle(
+              color: const Color(0xFF8E8E8E).withOpacity(0.5),
+              fontSize: 14.sp,
+              fontFamily: 'Poppins',
+            ),
+            prefixIcon: SvgPicture.asset(
+              prefixicon,
+              fit: BoxFit.scaleDown,
+            ),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(5.r)),
+            filled: true,
+            fillColor: const Color(0xFFF0F4F7),
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(5.r),
+            ),
           ),
+          cursorColor: const Color(0xFF8E8E8E),
         ),
-        hintText: hintText,
-        hintStyle: TextStyle(
-          color: const Color(0xFF8E8E8E).withOpacity(0.5),
-          fontSize: 14.sp,
-          fontFamily: 'Poppins',
-        ),
-        prefixIcon: SvgPicture.asset(
-          prefixicon,
-          fit: BoxFit.scaleDown,
-        ),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(5.r)),
-        filled: true,
-        fillColor: const Color(0xFFF0F4F7),
-        border: OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(5.r),
-        ),
-      ),
-      cursorColor: const Color(0xFF8E8E8E),
+      ],
     );
   }
 }

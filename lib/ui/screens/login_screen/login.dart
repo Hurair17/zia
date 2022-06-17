@@ -59,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                           height: 5.h,
                         ),
                         Text(
-                          'Please Sign In to continue',
+                          'Please Sign In to continue.',
                           style: TextStyle(
                             color: ksecondaryColor,
                             fontSize: 18.sp,
@@ -113,12 +113,12 @@ class LoginScreen extends StatelessWidget {
                               Get.to(ForgetPasswordScreen());
                             },
                             child: Text(
-                              'Forget Password?',
+                              'Forgot Password?',
                               style: TextStyle(
-                                color: kprimaryColor,
+                                color: kprimaryColor.withOpacity(0.65),
                                 fontFamily: 'Poppins',
                                 fontSize: 14.sp,
-                                fontWeight: FontWeight.w100,
+                                fontWeight: FontWeight.w200,
                               ),
                             ),
                           ),

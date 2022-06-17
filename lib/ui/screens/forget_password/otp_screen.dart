@@ -50,7 +50,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Forget Password',
+                          'Forgot Password',
                           style: TextStyle(
                             color: kprimaryColor,
                             fontFamily: 'Poppins',
@@ -112,12 +112,12 @@ class _OtpScreenState extends State<OtpScreen> {
                                 height: 59.h,
                               ),
                               Text(
-                                'Resend code in  sseconds.',
+                                'Resend code in ${15} seconds.',
                                 style: TextStyle(
                                   color: kprimaryColor,
                                   fontFamily: 'Poppins',
                                   fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               )
                             ],

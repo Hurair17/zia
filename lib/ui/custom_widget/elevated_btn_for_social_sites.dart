@@ -24,7 +24,12 @@ class LoginScreenEvletedBtnForSocialSites extends StatelessWidget {
         minimumSize: Size(105.w, 56.h),
         alignment: Alignment.center,
       ),
-      child: SvgPicture.asset(path),
+      child: SvgPicture.asset(
+        path,
+        height: 24.h,
+        width: 23.w,
+        // fit: BoxFit.scaleDown,
+      ),
     );
   }
 }

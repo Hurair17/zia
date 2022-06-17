@@ -34,62 +34,79 @@ class _PassTxtFormFieldState extends State<PassTxtFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: widget.control,
-      validator: widget.validation,
-      onChanged: widget.onChanged,
-      obscureText: passwordVisible,
-      decoration: InputDecoration(
-        errorText: widget.errorText,
-        errorBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.red,
+    return Stack(
+      children: [
+        Container(
+          height: 73.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: kshadowColor.withOpacity(0.07),
+                blurRadius: 2.r,
+                offset: Offset(0, 3.h),
+              ),
+            ],
           ),
         ),
-        focusedErrorBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.red,
+        TextFormField(
+          controller: widget.control,
+          validator: widget.validation,
+          onChanged: widget.onChanged,
+          obscureText: passwordVisible,
+          decoration: InputDecoration(
+            errorText: widget.errorText,
+            errorBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.red,
+              ),
+            ),
+            focusedErrorBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.red,
+              ),
+            ),
+            hintText: widget.hintText,
+            hintStyle: TextStyle(
+              color: const Color(0xFF8E8E8E).withOpacity(0.5),
+              fontSize: 14.sp,
+              fontFamily: 'Poppins',
+            ),
+            prefixIcon: SvgPicture.asset(
+              widget.iconpath,
+              fit: BoxFit.scaleDown,
+            ),
+            // Icon(
+            //   widget.prefixicon,
+            //   size: 30.h,
+            //   color: const Color(0xFF8E8E8E).withOpacity(0.5),
+            // ),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(5.r)),
+            filled: true,
+            fillColor: const Color(0xFFF0F4F7),
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(5.r),
+            ),
+            suffixIcon: IconButton(
+              icon: Icon(
+                // Based on passwordVisible state choose the icon
+                passwordVisible ? Icons.visibility_off : Icons.visibility,
+                color: ksecondaryColor,
+              ),
+              onPressed: () {
+                // Update the state i.e. toogle the state of passwordVisible variable
+                setState(() {
+                  passwordVisible = !passwordVisible;
+                });
+              },
+            ),
           ),
+          cursorColor: const Color(0xFF8E8E8E),
         ),
-        hintText: widget.hintText,
-        hintStyle: TextStyle(
-          color: const Color(0xFF8E8E8E).withOpacity(0.5),
-          fontSize: 14.sp,
-          fontFamily: 'Poppins',
-        ),
-        prefixIcon: SvgPicture.asset(
-          widget.iconpath,
-          fit: BoxFit.scaleDown,
-        ),
-        // Icon(
-        //   widget.prefixicon,
-        //   size: 30.h,
-        //   color: const Color(0xFF8E8E8E).withOpacity(0.5),
-        // ),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(5.r)),
-        filled: true,
-        fillColor: const Color(0xFFF0F4F7),
-        border: OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(5.r),
-        ),
-        suffixIcon: IconButton(
-          icon: Icon(
-            // Based on passwordVisible state choose the icon
-            passwordVisible ? Icons.visibility_off : Icons.visibility,
-            color: ksecondaryColor,
-          ),
-          onPressed: () {
-            // Update the state i.e. toogle the state of passwordVisible variable
-            setState(() {
-              passwordVisible = !passwordVisible;
-            });
-          },
-        ),
-      ),
-      cursorColor: const Color(0xFF8E8E8E),
+      ],
     );
   }
 }
