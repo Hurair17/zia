@@ -13,12 +13,10 @@ class LoginViewModel extends ChangeNotifier {
   }
 
   String? passwordValidation(String? value) {
-    String pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
-    RegExp regExp = RegExp(pattern);
-    if (regExp.hasMatch(value!)) {
-      return null;
+    if (value!.length < 8) {
+      return "Password must be 8 characters long";
     } else {
-      return "must contain upper, lower character and number ";
+      return null;
     }
   }
 }

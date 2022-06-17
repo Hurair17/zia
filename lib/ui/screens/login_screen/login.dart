@@ -34,8 +34,9 @@ class LoginScreen extends StatelessWidget {
                     height: 176.h,
                     width: double.infinity,
                     child: SvgPicture.asset(
-                        'assets/icons/auth_screen_design.svg',
-                        fit: BoxFit.cover),
+                      'assets/icons/auth_screen_design.svg',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   SizedBox(
                     height: 46.h,

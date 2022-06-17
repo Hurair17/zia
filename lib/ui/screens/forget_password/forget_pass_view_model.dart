@@ -29,12 +29,10 @@ class ForgetPassViewModel extends ChangeNotifier {
   }
 
   String? passwordValidation(String? password) {
-    String pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
-    RegExp regExp = RegExp(pattern);
-    if (regExp.hasMatch(password!)) {
-      return null;
+    if (password!.length < 8) {
+      return "Password must be 8 characters long";
     } else {
-      return "must contain upper, lower character and number ";
+      return null;
     }
   }
 
