@@ -7,6 +7,8 @@ import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_view_
 import 'package:recrutment_help_app/ui/screens/forget_password/otp_screen.dart';
 
 import '../../../core/constant/color.dart';
+import '../../custom_widget/down_elevated_btn.dart';
+import '../../custom_widget/top_svg_design.dart';
 import '../../custom_widget/user_info_txt_form_field.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
@@ -25,13 +27,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 176.h,
-                      width: double.infinity,
-                      child: SvgPicture.asset(
-                          'assets/icons/auth_screen_design.svg',
-                          fit: BoxFit.cover),
-                    ),
+                    const TopDesignForStartScreen(),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Form(
@@ -78,37 +74,12 @@ class ForgetPasswordScreen extends StatelessWidget {
                               },
                             ),
                             SizedBox(
-                              height: 28.h,
+                              height: 8.h,
                             ),
-                            ElevatedButton(
-                              onPressed: () {
-                                if (formKey.currentState!.validate()) {
-                                  Get.to(OtpScreen());
-                                } else {
-                                  print('error');
-                                }
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: kprimaryColor,
-                                onPrimary: Colors.white,
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.r)),
-                                minimumSize: Size(369.w, 57.h),
-                                maximumSize: Size(
-                                    MediaQuery.of(context).size.width,
-                                    MediaQuery.of(context).size.height),
-                                alignment: Alignment.center,
-                              ),
-                              child: Text(
-                                'Proceed',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Poppins',
-                                  fontSize: 18.sp,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                            DownElevetedButton(
+                              formKey: formKey,
+                              link: OtpScreen(),
+                              buttonText: 'Proceed',
                             ),
                           ],
                         ),

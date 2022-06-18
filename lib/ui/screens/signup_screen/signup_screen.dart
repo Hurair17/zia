@@ -1,15 +1,15 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:recrutment_help_app/ui/custom_widget/elevated_btn_for_social_sites.dart';
 import 'package:recrutment_help_app/ui/screens/login_screen/login.dart';
 import 'package:recrutment_help_app/ui/screens/signup_screen/signup_view_model.dart';
 
 import '../../../core/constant/color.dart';
+import '../../custom_widget/down_elevated_btn.dart';
 import '../../custom_widget/password_txt_form_field.dart';
+import '../../custom_widget/signuploginWidget/signuploginRichText.dart';
+import '../../custom_widget/top_svg_design.dart';
 import '../../custom_widget/user_info_txt_form_field.dart';
 
 class SignUp extends StatelessWidget {
@@ -35,13 +35,9 @@ class SignUp extends StatelessWidget {
                         height: 187.h,
                         width: double.infinity,
                       ),
-                      SizedBox(
-                        height: 176.h,
-                        width: double.infinity,
-                        child: SvgPicture.asset(
-                            'assets/icons/auth_screen_design.svg',
-                            fit: BoxFit.cover),
-                      ),
+                      // For the svg picture
+                      const TopDesignForStartScreen(),
+
                       Positioned(
                         top: 137.h,
                         child: Padding(
@@ -72,7 +68,6 @@ class SignUp extends StatelessWidget {
                           ),
                           TxtFormField(
                             hintText: 'Full Name',
-                            // errorText: 'Invalid email',
                             prefixicon: 'assets/icons/person.svg',
                             keyboardType: TextInputType.emailAddress,
                             validation: value.nameValidation,
@@ -80,12 +75,8 @@ class SignUp extends StatelessWidget {
                               value.signUpModel.fullName = val;
                             },
                           ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
                           TxtFormField(
                             hintText: 'Email',
-                            // errorText: 'Invalid email',
                             prefixicon: 'assets/icons/email_icon.svg',
                             keyboardType: TextInputType.emailAddress,
                             validation: value.emailValidation,
@@ -93,12 +84,8 @@ class SignUp extends StatelessWidget {
                               value.signUpModel.email = val;
                             },
                           ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
                           PassTxtFormField(
                             hintText: 'Password',
-                            // errorText: 'Invalid Password',
                             iconpath: 'assets/icons/pass_lock_icon.svg',
                             keyboardType: TextInputType.emailAddress,
                             validation: value.passwordValidation,
@@ -108,12 +95,8 @@ class SignUp extends StatelessWidget {
                             control: TextEditingController(
                                 text: value.signUpModel.password),
                           ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
                           PassTxtFormField(
                             hintText: 'Confirm Password',
-                            // errorText: 'Invalid Password',
                             iconpath: 'assets/icons/pass_lock_icon.svg',
                             keyboardType: TextInputType.emailAddress,
                             validation: value.confirmValidation,
@@ -123,41 +106,22 @@ class SignUp extends StatelessWidget {
                             control: TextEditingController(
                                 text: value.signUpModel.Confirmpassword),
                           ),
+
                           SizedBox(
-                            height: 70.h,
+                            height: 30.h,
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              if (formKey.currentState!.validate()) {
-                              } else {
-                                print('error');
-                              }
-                            },
-                            style: ElevatedButton.styleFrom(
-                              primary: kprimaryColor,
-                              onPrimary: Colors.white,
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.r)),
-                              minimumSize: Size(369.w, 57.h),
-                              maximumSize: Size(
-                                  MediaQuery.of(context).size.width,
-                                  MediaQuery.of(context).size.height),
-                              alignment: Alignment.center,
-                            ),
-                            child: Text(
-                              'Sign Up',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'Poppins',
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
+
+                          // Button for SignUp
+                          DownElevetedButton(
+                            formKey: formKey,
+                            // link: (),
+                            buttonText: 'Sign Up',
                           ),
                           SizedBox(
-                            height: 36.h,
+                            height: 30.h,
                           ),
+
+                          // Button for Social Sites
                           Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: const [
@@ -172,33 +136,17 @@ class SignUp extends StatelessWidget {
                                 ),
                               ]),
                           SizedBox(
-                            height: 51.h,
+                            height: 45.h,
                           ),
-                          Center(
-                            child: RichText(
-                              text: TextSpan(children: <TextSpan>[
-                                TextSpan(
-                                  text: 'Already have account. ',
-                                  style: TextStyle(
-                                      color: kprimaryColor,
-                                      fontFamily: 'Poppins',
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                                TextSpan(
-                                    text: 'Log In',
-                                    style: TextStyle(
-                                        color: kprimaryColor,
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16.sp,
-                                        fontWeight: FontWeight.w700),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        Get.to(LoginScreen());
-                                      }),
-                              ]),
-                            ),
-                          )
+
+                          // Down Text and Button
+                          SignUpLogInText(
+                            text: 'Already have an account. ',
+                            color1: kprimaryColor,
+                            btnText: 'Log In',
+                            btnColor: kprimaryColor,
+                            btnlink: LoginScreen(),
+                          ),
                         ],
                       ),
                     ),

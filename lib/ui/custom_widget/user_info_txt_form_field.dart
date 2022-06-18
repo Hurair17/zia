@@ -24,22 +24,13 @@ class TxtFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          height: 73.h,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: kshadowColor.withOpacity(0.07),
-                blurRadius: 2.r,
-                offset: Offset(0, 3.h),
-              ),
-            ],
-          ),
-        ),
-        TextFormField(
+    return Padding(
+      padding: EdgeInsets.only(bottom: 20.h),
+      child: Material(
+        borderRadius: BorderRadius.circular(5.r),
+        elevation: 2.0,
+        shadowColor: kshadowColor.withOpacity(0.4),
+        child: TextFormField(
           validator: validation,
           decoration: InputDecoration(
             errorText: errorText,
@@ -75,7 +66,7 @@ class TxtFormField extends StatelessWidget {
           ),
           cursorColor: const Color(0xFF8E8E8E),
         ),
-      ],
+      ),
     );
   }
 }

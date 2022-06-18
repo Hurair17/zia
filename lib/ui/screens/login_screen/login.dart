@@ -1,7 +1,5 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
@@ -10,8 +8,11 @@ import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_scree
 import 'package:recrutment_help_app/ui/screens/login_screen/login_view_model.dart';
 import 'package:recrutment_help_app/ui/screens/signup_screen/signup_screen.dart';
 
+import '../../custom_widget/down_elevated_btn.dart';
 import '../../custom_widget/elevated_btn_for_social_sites.dart';
 import '../../custom_widget/password_txt_form_field.dart';
+import '../../custom_widget/signuploginWidget/signuploginRichText.dart';
+import '../../custom_widget/top_svg_design.dart';
 import '../../custom_widget/user_info_txt_form_field.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -30,14 +31,7 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 176.h,
-                    width: double.infinity,
-                    child: SvgPicture.asset(
-                      'assets/icons/auth_screen_design.svg',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                  const TopDesignForStartScreen(),
                   SizedBox(
                     height: 46.h,
                   ),
@@ -47,30 +41,7 @@ class LoginScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Login',
-                          style: TextStyle(
-                            color: kprimaryColor,
-                            fontFamily: 'Poppins',
-                            fontSize: 32.sp,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Text(
-                          'Please Sign In to continue.',
-                          style: TextStyle(
-                            color: ksecondaryColor,
-                            fontSize: 18.sp,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 59.h,
-                        ),
+                        textWidget(),
                         Form(
                           key: formKey,
                           child: Column(
@@ -87,9 +58,11 @@ class LoginScreen extends StatelessWidget {
                                     value.logInModel.email = val;
                                   },
                                 ),
-                                SizedBox(
-                                  height: 24.h,
-                                ),
+
+                                // SizedBox(
+                                //   height: 24.h,
+                                // ),
+
                                 PassTxtFormField(
                                   hintText: 'Password',
                                   // errorText: 'Invalid Password',
@@ -127,34 +100,12 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           height: 38.h,
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                            } else {
-                              print('error');
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: kprimaryColor,
-                            onPrimary: Colors.white,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.r)),
-                            minimumSize: Size(369.w, 57.h),
-                            maximumSize: Size(MediaQuery.of(context).size.width,
-                                MediaQuery.of(context).size.height),
-                            alignment: Alignment.center,
-                          ),
-                          child: Text(
-                            'Login',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Poppins',
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
+                        DownElevetedButton(
+                          formKey: formKey,
+                          // link: (),
+                          buttonText: 'Login',
                         ),
+
                         SizedBox(
                           height: 26.h,
                         ),
@@ -171,6 +122,7 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           height: 26.h,
                         ),
+                        //Social Auth Buttons
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: const [
@@ -187,31 +139,13 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           height: 43.h,
                         ),
-                        Center(
-                          child: RichText(
-                            text: TextSpan(children: <TextSpan>[
-                              TextSpan(
-                                text: 'Don\'t have an account.',
-                                style: TextStyle(
-                                    color: ksecondaryColor,
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              TextSpan(
-                                  text: ' Sign Up',
-                                  style: TextStyle(
-                                      color: kprimaryColor,
-                                      fontFamily: 'Poppins',
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.w700),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      Get.to(SignUp());
-                                    }),
-                            ]),
-                          ),
-                        )
+                        SignUpLogInText(
+                          text: 'Don\'t have an account. ',
+                          color1: ksecondaryColor,
+                          btnText: 'Sign Up',
+                          btnColor: kprimaryColor,
+                          btnlink: SignUp(),
+                        ),
                       ],
                     ),
                   )
@@ -223,4 +157,36 @@ class LoginScreen extends StatelessWidget {
       }),
     );
   }
+}
+
+Widget textWidget() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        'Login',
+        style: TextStyle(
+          color: kprimaryColor,
+          fontFamily: 'Poppins',
+          fontSize: 32.sp,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      SizedBox(
+        height: 5.h,
+      ),
+      Text(
+        'Please Sign In to continue.',
+        style: TextStyle(
+          color: ksecondaryColor,
+          fontSize: 18.sp,
+          fontFamily: 'Poppins',
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      SizedBox(
+        height: 59.h,
+      ),
+    ],
+  );
 }

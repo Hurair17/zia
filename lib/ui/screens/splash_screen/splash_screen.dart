@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../onboarding_screen/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
+  // make it stateless
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
@@ -25,9 +26,9 @@ class _SplashScreenState extends State<SplashScreen> {
     bool flag = await getVisitingFlag();
     setVisitingFlag();
     if (flag == true) {
-      Get.to(OnboardingScreen());
+      Get.offAll(LoginScreen());
     } else {
-      Get.to(OnboardingScreen());
+      Get.offAll(const OnboardingScreen());
     }
   }
 
