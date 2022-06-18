@@ -5,14 +5,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../core/constant/color.dart';
 
 class TxtFormField extends StatelessWidget {
-  String? hintText;
-  String? errorText;
-  TextInputType? keyboardType;
-  String prefixicon;
+  final String? hintText;
+  final String? errorText;
+  final TextInputType? keyboardType;
+  final String prefixicon;
   final String? Function(String?)? validation;
   final Function(String)? onChanged;
 
-  TxtFormField({
+  const TxtFormField({
     Key? key,
     this.hintText,
     this.errorText,

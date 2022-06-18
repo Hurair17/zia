@@ -101,10 +101,10 @@ class SignUp extends StatelessWidget {
                             keyboardType: TextInputType.emailAddress,
                             validation: value.confirmValidation,
                             onChanged: (val) {
-                              value.signUpModel.Confirmpassword = val;
+                              value.signUpModel.confirmpassword = val;
                             },
                             control: TextEditingController(
-                                text: value.signUpModel.Confirmpassword),
+                                text: value.signUpModel.confirmpassword),
                           ),
 
                           SizedBox(

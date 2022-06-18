@@ -75,7 +75,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                             ),
                             DownElevetedButton(
                               formKey: formKey,
-                              link: OtpScreen(),
+                              link: const OtpScreen(),
                               buttonText: 'Proceed',
                             ),
                           ],

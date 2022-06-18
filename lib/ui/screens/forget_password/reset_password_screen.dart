@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_view_model.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/password_success_change_screen.dart';
@@ -58,18 +57,18 @@ class ResetPasswordScreen extends StatelessWidget {
                               keyboardType: TextInputType.emailAddress,
                               validation: model.confirmValidation,
                               onChanged: (val) {
-                                model.resetPasswordModel.Confirmpassword = val;
+                                model.resetPasswordModel.confirmpassword = val;
                               },
                               control: TextEditingController(
                                   text:
-                                      model.resetPasswordModel.Confirmpassword),
+                                      model.resetPasswordModel.confirmpassword),
                             ),
                             SizedBox(
                               height: 75.h,
                             ),
                             DownElevetedButton(
                               formKey: formKey,
-                              link: PasswordChangeSuccessfully(),
+                              link: const PasswordChangeSuccessfully(),
                               buttonText: 'Reset Password',
                             ),
                           ],

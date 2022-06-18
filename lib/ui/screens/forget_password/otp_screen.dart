@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:recrutment_help_app/ui/custom_widget/otp.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_view_model.dart';
@@ -14,7 +10,7 @@ import '../../custom_widget/down_elevated_btn.dart';
 import '../../custom_widget/top_svg_design.dart';
 
 class OtpScreen extends StatefulWidget {
-  OtpScreen({Key? key}) : super(key: key);
+  const OtpScreen({Key? key}) : super(key: key);
 
   @override
   State<OtpScreen> createState() => _OtpScreenState();
@@ -78,7 +74,7 @@ class _OtpScreenState extends State<OtpScreen> {
                               ),
 
                               //Button to verify otp
-                              DownElevetedButton(
+                              const DownElevetedButton(
                                 // formKey: formKey,
                                 link: VerifyScreen(),
                                 buttonText: 'Verify Code',

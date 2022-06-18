@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:recrutment_help_app/core/models/auth_model/reset_password_model.dart';
 
 import '../../../core/models/auth_model/forget_password_model.dart';

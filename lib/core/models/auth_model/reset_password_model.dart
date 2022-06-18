@@ -1,6 +1,6 @@
 class ResetPasswordModel {
   String? password;
 
-  String? Confirmpassword;
+  String? confirmpassword;
   ResetPasswordModel({this.password});
 }
