@@ -36,62 +36,74 @@ class _PassTxtFormFieldState extends State<PassTxtFormField> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: 20.h),
-      child: Material(
-        borderRadius: BorderRadius.circular(5.r),
-        elevation: 2.0,
-        shadowColor: kshadowColor.withOpacity(0.4),
-        child: TextFormField(
-          controller: widget.control,
-          validator: widget.validation,
-          onChanged: widget.onChanged,
-          obscureText: passwordVisible,
-          decoration: InputDecoration(
-            errorText: widget.errorText,
-            errorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.red,
-              ),
-            ),
-            focusedErrorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.red,
-              ),
-            ),
-            hintText: widget.hintText,
-            hintStyle: TextStyle(
-              color: const Color(0xFF8E8E8E).withOpacity(0.5),
-              fontSize: 14.sp,
-              fontFamily: 'Poppins',
-            ),
-            prefixIcon: SvgPicture.asset(
-              widget.iconpath,
-              fit: BoxFit.scaleDown,
-            ),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(5.r)),
-            filled: true,
-            fillColor: const Color(0xFFF0F4F7),
-            border: OutlineInputBorder(
-              borderSide: BorderSide.none,
+      child: Stack(
+        children: [
+          Container(
+            height: 72.h,
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5.r),
-            ),
-            suffixIcon: IconButton(
-              icon: Icon(
-                // Based on passwordVisible state choose the icon
-                passwordVisible ? Icons.visibility_off : Icons.visibility,
-                color: ksecondaryColor,
-              ),
-              onPressed: () {
-                // Update the state i.e. toogle the state of passwordVisible variable
-                setState(() {
-                  passwordVisible = !passwordVisible;
-                });
-              },
+              boxShadow: [
+                BoxShadow(
+                  color: kshadowColor.withOpacity(0.07),
+                  blurRadius: 5.r,
+                  offset: Offset(0, 3.r),
+                ),
+              ],
             ),
           ),
-          cursorColor: const Color(0xFF8E8E8E),
-        ),
+          TextFormField(
+            controller: widget.control,
+            validator: widget.validation,
+            onChanged: widget.onChanged,
+            obscureText: passwordVisible,
+            decoration: InputDecoration(
+              errorText: widget.errorText,
+              errorBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.red,
+                ),
+              ),
+              focusedErrorBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.red,
+                ),
+              ),
+              hintText: widget.hintText,
+              hintStyle: TextStyle(
+                color: const Color(0xFF8E8E8E).withOpacity(0.5),
+                fontSize: 14.sp,
+                fontFamily: 'Poppins',
+              ),
+              prefixIcon: SvgPicture.asset(
+                widget.iconpath,
+                fit: BoxFit.scaleDown,
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(5.r)),
+              filled: true,
+              fillColor: const Color(0xFFF0F4F7),
+              border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(5.r),
+              ),
+              suffixIcon: IconButton(
+                icon: Icon(
+                  // Based on passwordVisible state choose the icon
+                  passwordVisible ? Icons.visibility_off : Icons.visibility,
+                  color: ksecondaryColor,
+                ),
+                onPressed: () {
+                  // Update the state i.e. toogle the state of passwordVisible variable
+                  setState(() {
+                    passwordVisible = !passwordVisible;
+                  });
+                },
+              ),
+            ),
+            cursorColor: const Color(0xFF8E8E8E),
+          ),
+        ],
       ),
     );
   }
