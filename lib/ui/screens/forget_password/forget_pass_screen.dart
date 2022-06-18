@@ -63,7 +63,6 @@ class ForgetPasswordScreen extends StatelessWidget {
                             ),
                             TxtFormField(
                               hintText: 'Email',
-                              // errorText: 'Invalid email',
                               prefixicon: 'assets/icons/email_icon.svg',
                               keyboardType: TextInputType.emailAddress,
                               validation: model.emailValidation,

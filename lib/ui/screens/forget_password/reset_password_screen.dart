@@ -8,6 +8,7 @@ import 'package:recrutment_help_app/ui/screens/forget_password/password_success_
 import '../../../core/constant/color.dart';
 import '../../custom_widget/down_elevated_btn.dart';
 import '../../custom_widget/password_txt_form_field.dart';
+import '../../custom_widget/top_svg_design.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   ResetPasswordScreen({Key? key}) : super(key: key);
@@ -23,13 +24,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 176.h,
-                      width: double.infinity,
-                      child: SvgPicture.asset(
-                          'assets/icons/auth_screen_design.svg',
-                          fit: BoxFit.cover),
-                    ),
+                    const TopDesignForStartScreen(),
                     SizedBox(
                       height: 46.h,
                     ),
@@ -40,30 +35,7 @@ class ResetPasswordScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Reset Password',
-                              style: TextStyle(
-                                color: kprimaryColor,
-                                fontFamily: 'Poppins',
-                                fontSize: 32.sp,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Text(
-                              'Please reset your password.',
-                              style: TextStyle(
-                                color: ksecondaryColor,
-                                fontFamily: 'Poppins',
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 59.h,
-                            ),
+                            topText(),
                             PassTxtFormField(
                               hintText: 'Password',
                               // errorText: 'Invalid Password',
@@ -111,4 +83,36 @@ class ResetPasswordScreen extends StatelessWidget {
           );
         }));
   }
+}
+
+// Extracted Widget
+Widget topText() {
+  return Column(
+    children: [
+      Text(
+        'Reset Password',
+        style: TextStyle(
+          color: kprimaryColor,
+          fontFamily: 'Poppins',
+          fontSize: 32.sp,
+          fontWeight: FontWeight.w800,
+        ),
+      ),
+      SizedBox(
+        height: 5.h,
+      ),
+      Text(
+        'Please reset your password.',
+        style: TextStyle(
+          color: ksecondaryColor,
+          fontFamily: 'Poppins',
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      SizedBox(
+        height: 59.h,
+      ),
+    ],
+  );
 }

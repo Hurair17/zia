@@ -58,11 +58,6 @@ class LoginScreen extends StatelessWidget {
                                     value.logInModel.email = val;
                                   },
                                 ),
-
-                                // SizedBox(
-                                //   height: 24.h,
-                                // ),
-
                                 PassTxtFormField(
                                   hintText: 'Password',
                                   // errorText: 'Invalid Password',

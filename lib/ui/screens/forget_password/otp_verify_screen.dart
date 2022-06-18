@@ -5,6 +5,7 @@ import 'package:recrutment_help_app/core/constant/color.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/reset_password_screen.dart';
 
 import '../../custom_widget/down_elevated_btn.dart';
+import '../../custom_widget/top_svg_design.dart';
 
 class VerifyScreen extends StatelessWidget {
   const VerifyScreen({Key? key}) : super(key: key);
@@ -16,12 +17,7 @@ class VerifyScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 176.h,
-                width: double.infinity,
-                child: SvgPicture.asset('assets/icons/auth_screen_design.svg',
-                    fit: BoxFit.cover),
-              ),
+              const TopDesignForStartScreen(),
               SizedBox(
                 height: 120.h,
               ),

@@ -11,6 +11,7 @@ import 'package:recrutment_help_app/ui/screens/forget_password/otp_verify_screen
 
 import '../../../core/constant/color.dart';
 import '../../custom_widget/down_elevated_btn.dart';
+import '../../custom_widget/top_svg_design.dart';
 
 class OtpScreen extends StatefulWidget {
   OtpScreen({Key? key}) : super(key: key);
@@ -34,13 +35,7 @@ class _OtpScreenState extends State<OtpScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 176.h,
-                    width: double.infinity,
-                    child: SvgPicture.asset(
-                        'assets/icons/auth_screen_design.svg',
-                        fit: BoxFit.cover),
-                  ),
+                  const TopDesignForStartScreen(),
                   SizedBox(
                     height: 46.h,
                   ),
@@ -77,27 +72,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           key: formKey,
                           child: Column(
                             children: [
-                              //   Row(
-                              //     mainAxisAlignment:
-                              //         MainAxisAlignment.spaceBetween,
-                              //     children: [
-                              //       OtpTextField(
-                              //         validation: value.oTPValidation,
-                              //       ),
-                              //       OtpTextField(
-                              //         validation: value.oTPValidation,
-                              //         // control: TextEditingController(
-                              //         //   text: value.logInModel.password),
-                              //       ),
-                              //       OtpTextField(
-                              //         validation: value.oTPValidation,
-                              //       ),
-                              //       OtpTextField(
-                              //         validation: value.oTPValidation,
-                              //       ),
-                              //     ],
-                              //   ),
-                              FilledRoundedPinPut(),
+                              const FilledRoundedPinPut(),
                               SizedBox(
                                 height: 28.h,
                               ),
@@ -131,60 +106,5 @@ class _OtpScreenState extends State<OtpScreen> {
             ),
           ));
         }));
-  }
-}
-
-class OtpTextField extends StatelessWidget {
-  final String? Function(String?)? validation;
-  TextEditingController? control;
-
-  OtpTextField({
-    this.control,
-    this.validation,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.w),
-        color: ksecondaryColorForBack,
-      ),
-      height: 61.h,
-      width: 71.h,
-      child: TextFormField(
-        controller: control,
-        validator: validation,
-        onSaved: (value) {},
-        onChanged: (value) {
-          if (value.length == 1) {
-            FocusScope.of(context).nextFocus();
-          }
-        },
-        decoration: const InputDecoration(
-          border: InputBorder.none,
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.red,
-            ),
-          ),
-        ),
-        // style: Theme.of(context).textTheme.headline6,
-        style: TextStyle(
-          color: kprimaryColor,
-          fontFamily: 'Poppins',
-          fontSize: 29.sp,
-          fontWeight: FontWeight.w400,
-        ),
-        cursorColor: ksecondaryColor,
-        keyboardType: TextInputType.number,
-        textAlign: TextAlign.center,
-        inputFormatters: [
-          LengthLimitingTextInputFormatter(1),
-          FilteringTextInputFormatter.digitsOnly
-        ],
-      ),
-    );
   }
 }
