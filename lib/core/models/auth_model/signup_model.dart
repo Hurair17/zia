@@ -13,10 +13,10 @@ class SignUpModel {
       this.token});
 
   factory SignUpModel.fromJson(Map<String, dynamic> json) => SignUpModel(
-        fullName: json["full_name"],
+        fullName: json["name"],
         email: json["email"],
         password: json["password"],
-        confirmpassword: json["confirm_password"],
+        confirmpassword: json["password_confirmation"],
         token: json["token"],
       );
 }

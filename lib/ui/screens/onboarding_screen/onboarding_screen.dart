@@ -16,90 +16,107 @@ class OnboardingScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-          child: Column(
+          child: Stack(
             children: [
-              Stack(
+              Positioned(
+                top: 557.h,
+                left: 1.sw / 2 - 27.3.w,
+                child: SmoothPageIndicator(
+                  controller: controller,
+                  count: 2,
+                  onDotClicked: (index) {
+                    // controller.animateToPage(index,
+                    //     duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+                  },
+                  effect: ExpandingDotsEffect(
+                      dotHeight: 9.h,
+                      dotWidth: 12.w,
+                      dotColor: ksecondaryColor,
+                      activeDotColor: kprimaryColor),
+                ),
+              ),
+              Column(
                 children: [
+                  Stack(
+                    children: [
+                      SizedBox(
+                        height: 140.h,
+                        width: double.infinity,
+                      ),
+                      SvgPicture.asset(
+                        'assets/icons/Ellipse_onboarding_screen.svg',
+                        height: 113.h,
+                        width: 113.w,
+                        fit: BoxFit.fill,
+                      ),
+                      Positioned(
+                        top: 89.h,
+                        right: 25.w,
+                        child: TextButton(
+                            onPressed: () {
+                              Get.offAll(LoginScreen());
+                            },
+                            child: Text('SKIP',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    color: kprimaryColor.withOpacity(0.7),
+                                    fontSize: 16.sp))),
+                      ),
+                    ],
+                  ),
                   SizedBox(
-                    height: 140.h,
-                    width: double.infinity,
+                    height: 120.h,
                   ),
-                  SvgPicture.asset(
-                    'assets/icons/Ellipse_onboarding_screen.svg',
-                    height: 113.h,
-                    width: 113.w,
-                    fit: BoxFit.fill,
+                  SizedBox(
+                    height: 443.h,
+                    child: PageView(
+                      controller: controller,
+                      children: const [
+                        OnBoardScreen(
+                          path: 'assets/icons/onboard_1.svg',
+                          text: 'Is recruting manually a hectic process?',
+                        ),
+                        OnBoardScreen(
+                          path: 'assets/icons/onboard_2.svg',
+                          text: 'Take your hiring test at home and get hired!',
+                        ),
+                      ],
+                    ),
                   ),
-                  Positioned(
-                    top: 89.h,
-                    right: 25.w,
-                    child: TextButton(
-                        onPressed: () {
-                          Get.offAll(LoginScreen());
-                        },
-                        child: Text('SKIP',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                color: kprimaryColor.withOpacity(0.7),
-                                fontSize: 16.sp))),
-                  ),
+                  Stack(children: [
+                    SizedBox(
+                      height: 178.h,
+                      width: double.infinity,
+                    ),
+                    Positioned(
+                      right: 0.h,
+                      child: SvgPicture.asset(
+                        'assets/icons/ellipse_oboard.svg',
+                        height: 178.h,
+                      ),
+                    ),
+                    Center(
+                      child: IconButton(
+                          onPressed: () {
+                            // Get.to(widget);
+                            if (index == 0) {
+                              controller.nextPage(
+                                  duration: Duration(milliseconds: 500),
+                                  curve: Curves.easeIn);
+                              index++;
+                            } else {
+                              Get.offAll(LoginScreen());
+                            }
+                          },
+                          icon: SvgPicture.asset(
+                            'assets/icons/arrow.svg',
+                            height: 43.h,
+                            width: 43.w,
+                          )),
+                    ),
+                  ]),
                 ],
               ),
-              SizedBox(
-                height: 120.h,
-              ),
-              SizedBox(
-                height: 443.h,
-                child: PageView(
-                  controller: controller,
-                  children: [
-                    OnBoardScreen(
-                      control: controller,
-                      controller: PageController(initialPage: 0),
-                      path: 'assets/icons/onboard_1.svg',
-                      text: 'Is recruting manually a hectic process?',
-                    ),
-                    OnBoardScreen(
-                      control: controller,
-                      controller: PageController(initialPage: 1),
-                      path: 'assets/icons/onboard_2.svg',
-                      text: 'Take your hiring test at home and get hired!',
-                    ),
-                  ],
-                ),
-              ),
-              Stack(children: [
-                SizedBox(
-                  height: 178.h,
-                  width: double.infinity,
-                ),
-                Positioned(
-                  right: 0.h,
-                  child: SvgPicture.asset(
-                    'assets/icons/ellipse_oboard.svg',
-                    height: 178.h,
-                  ),
-                ),
-                Center(
-                  child: IconButton(
-                      onPressed: () {
-                        // Get.to(widget);
-                        if (index == 0) {
-                          controller.nextPage(
-                              duration: Duration(milliseconds: 500),
-                              curve: Curves.easeIn);
-                          index++;
-                        } else {
-                          Get.offAll(LoginScreen());
-                        }
-                      },
-                      icon: SvgPicture.asset(
-                        'assets/icons/arrow.svg',
-                        height: 43.h,
-                        width: 43.w,
-                      )),
-                ),
-              ]),
             ],
           ),
         ),
@@ -109,16 +126,9 @@ class OnboardingScreen extends StatelessWidget {
 }
 
 class OnBoardScreen extends StatelessWidget {
-  final control;
-  final controller;
   final String path;
   final String text;
-  OnBoardScreen(
-      {required this.control,
-      required this.controller,
-      required this.path,
-      required this.text,
-      Key? key})
+  const OnBoardScreen({required this.path, required this.text, Key? key})
       : super(key: key);
 
   @override
@@ -133,23 +143,7 @@ class OnBoardScreen extends StatelessWidget {
           fit: BoxFit.scaleDown,
         ),
         SizedBox(
-          height: 75.h,
-        ),
-        SmoothPageIndicator(
-          controller: control,
-          count: 2,
-          onDotClicked: (index) {
-            // controller.animateToPage(index,
-            //     duration: Duration(milliseconds: 500), curve: Curves.easeIn);
-          },
-          effect: ExpandingDotsEffect(
-              dotHeight: 9.h,
-              dotWidth: 12.w,
-              dotColor: ksecondaryColor,
-              activeDotColor: kprimaryColor),
-        ),
-        SizedBox(
-          height: 60.h,
+          height: 144.h,
         ),
         SizedBox(
           width: 203.w,
