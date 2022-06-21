@@ -84,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                             child: Text(
                               'Forgot Password?',
                               style: TextStyle(
-                                color: kprimaryColor.withOpacity(0.65),
+                                color: kprimaryColor,
                                 fontFamily: 'Poppins',
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w200,

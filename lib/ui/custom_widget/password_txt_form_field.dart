@@ -78,30 +78,34 @@ class _PassTxtFormFieldState extends State<PassTxtFormField> {
                 widget.iconpath,
                 fit: BoxFit.scaleDown,
               ),
+              // focusColor: kprimaryColor,
               focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(5.r)),
+                // borderSide: BorderSide.none,
+
+                borderRadius: BorderRadius.circular(5.r),
+                borderSide: BorderSide(
+                  color: Color.fromARGB(255, 31, 126, 181).withOpacity(0.5),
+                ),
+              ),
               filled: true,
               fillColor: const Color(0xFFF0F4F7),
               border: OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.circular(5.r),
               ),
-              suffixIcon: IconButton(
-                icon: Icon(
-                  // Based on passwordVisible state choose the icon
-                  passwordVisible ? Icons.visibility_off : Icons.visibility,
-                  color: ksecondaryColor,
-                ),
-                onPressed: () {
-                  // Update the state i.e. toogle the state of passwordVisible variable
+              suffixIcon: GestureDetector(
+                onTap: () {
                   setState(() {
                     passwordVisible = !passwordVisible;
                   });
                 },
+                child: Icon(
+                  passwordVisible ? Icons.visibility : Icons.visibility_off,
+                  // color: ksecondaryColor,
+                ),
               ),
             ),
-            cursorColor: const Color(0xFF8E8E8E),
+            // cursorColor: const Color(0xFF8E8E8E),
           ),
         ],
       ),

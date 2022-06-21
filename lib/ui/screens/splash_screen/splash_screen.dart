@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (flag == true) {
       Get.offAll(LoginScreen());
     } else {
-      Get.offAll(const OnboardingScreen());
+      Get.offAll(OnboardingScreen());
     }
   }
 

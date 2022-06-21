@@ -1,34 +1,172 @@
 import 'package:flutter/material.dart';
-import 'package:recrutment_help_app/ui/screens/onboarding_screen/screen1.dart';
-import 'package:recrutment_help_app/ui/screens/onboarding_screen/screen2.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:recrutment_help_app/ui/screens/login_screen/login.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({Key? key}) : super(key: key);
+import '../../../core/constant/color.dart';
 
-  @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
-}
-
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class OnboardingScreen extends StatelessWidget {
+  OnboardingScreen({Key? key}) : super(key: key);
   final controller = PageController(initialPage: 0);
-  @override
-  void dispose() {
-    controller.dispose();
-
-    super.dispose();
-  }
-
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: PageView(
-          children: [
-            Screen1(controller: controller),
-            Screen2(controller: controller),
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  SizedBox(
+                    height: 140.h,
+                    width: double.infinity,
+                  ),
+                  SvgPicture.asset(
+                    'assets/icons/Ellipse_onboarding_screen.svg',
+                    height: 113.h,
+                    width: 113.w,
+                    fit: BoxFit.fill,
+                  ),
+                  Positioned(
+                    top: 89.h,
+                    right: 25.w,
+                    child: TextButton(
+                        onPressed: () {
+                          Get.offAll(LoginScreen());
+                        },
+                        child: Text('SKIP',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: kprimaryColor.withOpacity(0.7),
+                                fontSize: 16.sp))),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 120.h,
+              ),
+              SizedBox(
+                height: 443.h,
+                child: PageView(
+                  controller: controller,
+                  children: [
+                    OnBoardScreen(
+                      control: controller,
+                      controller: PageController(initialPage: 0),
+                      path: 'assets/icons/onboard_1.svg',
+                      text: 'Is recruting manually a hectic process?',
+                    ),
+                    OnBoardScreen(
+                      control: controller,
+                      controller: PageController(initialPage: 1),
+                      path: 'assets/icons/onboard_2.svg',
+                      text: 'Take your hiring test at home and get hired!',
+                    ),
+                  ],
+                ),
+              ),
+              Stack(children: [
+                SizedBox(
+                  height: 178.h,
+                  width: double.infinity,
+                ),
+                Positioned(
+                  right: 0.h,
+                  child: SvgPicture.asset(
+                    'assets/icons/ellipse_oboard.svg',
+                    height: 178.h,
+                  ),
+                ),
+                Center(
+                  child: IconButton(
+                      onPressed: () {
+                        // Get.to(widget);
+                        if (index == 0) {
+                          controller.nextPage(
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.easeIn);
+                          index++;
+                        } else {
+                          Get.offAll(LoginScreen());
+                        }
+                      },
+                      icon: SvgPicture.asset(
+                        'assets/icons/arrow.svg',
+                        height: 43.h,
+                        width: 43.w,
+                      )),
+                ),
+              ]),
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class OnBoardScreen extends StatelessWidget {
+  final control;
+  final controller;
+  final String path;
+  final String text;
+  OnBoardScreen(
+      {required this.control,
+      required this.controller,
+      required this.path,
+      required this.text,
+      Key? key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SvgPicture.asset(
+          path,
+          width: 275.w,
+          height: 206.h,
+          fit: BoxFit.scaleDown,
+        ),
+        SizedBox(
+          height: 75.h,
+        ),
+        SmoothPageIndicator(
+          controller: control,
+          count: 2,
+          onDotClicked: (index) {
+            // controller.animateToPage(index,
+            //     duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+          },
+          effect: ExpandingDotsEffect(
+              dotHeight: 9.h,
+              dotWidth: 12.w,
+              dotColor: ksecondaryColor,
+              activeDotColor: kprimaryColor),
+        ),
+        SizedBox(
+          height: 60.h,
+        ),
+        SizedBox(
+          width: 203.w,
+          height: 48.h,
+          child: Text(
+            text,
+            style: TextStyle(
+                color: kprimaryColor,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w600),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        SizedBox(
+          height: 45.h,
+        ),
+      ],
     );
   }
 }
