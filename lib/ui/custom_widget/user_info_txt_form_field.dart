@@ -66,6 +66,9 @@ class TxtFormField extends StatelessWidget {
                 fit: BoxFit.scaleDown,
               ),
               focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 31, 126, 181).withOpacity(0.5),
+                  ),
                   // borderSide: BorderSide.none,
                   borderRadius: BorderRadius.circular(5.r)),
               filled: true,
