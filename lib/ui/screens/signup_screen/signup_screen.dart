@@ -15,7 +15,10 @@ import '../../custom_widget/user_info_txt_form_field.dart';
 class SignUp extends StatelessWidget {
   SignUp({Key? key}) : super(key: key);
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
+  final fullnamecontroller = TextEditingController();
+  final emailcontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
+  final confirmpasswordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -74,6 +77,7 @@ class SignUp extends StatelessWidget {
                             onChanged: (val) {
                               value.signUpModel.fullName = val;
                             },
+                            controller: fullnamecontroller,
                           ),
                           TxtFormField(
                             hintText: 'Email',
@@ -83,6 +87,7 @@ class SignUp extends StatelessWidget {
                             onChanged: (val) {
                               value.signUpModel.email = val;
                             },
+                            controller: emailcontroller,
                           ),
                           PassTxtFormField(
                             hintText: 'Password',
@@ -92,8 +97,7 @@ class SignUp extends StatelessWidget {
                             onChanged: (val) {
                               value.signUpModel.password = val;
                             },
-                            control: TextEditingController(
-                                text: value.signUpModel.password),
+                            controller: passwordcontroller,
                           ),
                           PassTxtFormField(
                             hintText: 'Confirm Password',
@@ -103,8 +107,7 @@ class SignUp extends StatelessWidget {
                             onChanged: (val) {
                               value.signUpModel.confirmpassword = val;
                             },
-                            control: TextEditingController(
-                                text: value.signUpModel.confirmpassword),
+                            controller: confirmpasswordcontroller,
                           ),
 
                           SizedBox(
@@ -113,8 +116,11 @@ class SignUp extends StatelessWidget {
 
                           // Button for SignUp
                           DownElevetedButton(
-                            formKey: formKey,
-                            // link: (),
+                            ontap: () async {
+                              if (formKey.currentState!.validate()) {
+                                print('valida');
+                              }
+                            },
                             buttonText: 'Sign Up',
                           ),
                           SizedBox(

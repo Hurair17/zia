@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_view_model.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/password_success_change_screen.dart';
@@ -12,6 +13,8 @@ import '../../custom_widget/top_svg_design.dart';
 class ResetPasswordScreen extends StatelessWidget {
   ResetPasswordScreen({Key? key}) : super(key: key);
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final passwordcontroller = TextEditingController();
+  final confirmpasswordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ForgetPassViewModel>(
@@ -44,8 +47,7 @@ class ResetPasswordScreen extends StatelessWidget {
                               onChanged: (val) {
                                 model.resetPasswordModel.password = val;
                               },
-                              control: TextEditingController(
-                                  text: model.resetPasswordModel.password),
+                              controller: passwordcontroller,
                             ),
                             SizedBox(
                               height: 24.h,
@@ -59,16 +61,17 @@ class ResetPasswordScreen extends StatelessWidget {
                               onChanged: (val) {
                                 model.resetPasswordModel.confirmpassword = val;
                               },
-                              control: TextEditingController(
-                                  text:
-                                      model.resetPasswordModel.confirmpassword),
+                              controller: confirmpasswordcontroller,
                             ),
                             SizedBox(
                               height: 75.h,
                             ),
                             DownElevetedButton(
-                              formKey: formKey,
-                              link: const PasswordChangeSuccessfully(),
+                              ontap: () async {
+                                if (formKey.currentState!.validate()) {
+                                  Get.to(const PasswordChangeSuccessfully());
+                                }
+                              },
                               buttonText: 'Reset Password',
                             ),
                           ],

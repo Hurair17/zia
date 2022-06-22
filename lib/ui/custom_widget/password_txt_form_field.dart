@@ -12,10 +12,10 @@ class PassTxtFormField extends StatefulWidget {
   String iconpath;
   final String? Function(String?)? validation;
   final Function(String)? onChanged;
-  TextEditingController? control;
+  final TextEditingController? controller;
 
   PassTxtFormField({
-    this.control,
+    this.controller,
     this.errorText,
     this.keyboardType,
     this.hintText,
@@ -52,7 +52,7 @@ class _PassTxtFormFieldState extends State<PassTxtFormField> {
             ),
           ),
           TextFormField(
-            controller: widget.control,
+            controller: widget.controller,
             validator: widget.validation,
             onChanged: widget.onChanged,
             obscureText: passwordVisible,

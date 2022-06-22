@@ -19,7 +19,7 @@ class OnboardingScreen extends StatelessWidget {
           child: Stack(
             children: [
               Positioned(
-                top: 557.h,
+                top: 547.h,
                 left: 1.sw / 2 - 27.3.w,
                 child: SmoothPageIndicator(
                   controller: controller,
@@ -31,7 +31,7 @@ class OnboardingScreen extends StatelessWidget {
                   effect: ExpandingDotsEffect(
                       dotHeight: 9.h,
                       dotWidth: 12.w,
-                      dotColor: ksecondaryColor,
+                      dotColor: ksecondaryColorForBack,
                       activeDotColor: kprimaryColor),
                 ),
               ),
@@ -59,7 +59,7 @@ class OnboardingScreen extends StatelessWidget {
                             child: Text('SKIP',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
-                                    color: kprimaryColor.withOpacity(0.7),
+                                    color: kprimaryColor,
                                     fontSize: 16.sp))),
                       ),
                     ],
@@ -68,7 +68,7 @@ class OnboardingScreen extends StatelessWidget {
                     height: 120.h,
                   ),
                   SizedBox(
-                    height: 443.h,
+                    height: 447.h,
                     child: PageView(
                       controller: controller,
                       children: const [
@@ -92,7 +92,7 @@ class OnboardingScreen extends StatelessWidget {
                       right: 0.h,
                       child: SvgPicture.asset(
                         'assets/icons/ellipse_oboard.svg',
-                        height: 178.h,
+                        height: 174.h,
                       ),
                     ),
                     Center(
@@ -139,7 +139,7 @@ class OnBoardScreen extends StatelessWidget {
         SvgPicture.asset(
           path,
           width: 275.w,
-          height: 206.h,
+          height: 196.h,
           fit: BoxFit.scaleDown,
         ),
         SizedBox(
@@ -147,7 +147,7 @@ class OnBoardScreen extends StatelessWidget {
         ),
         SizedBox(
           width: 203.w,
-          height: 48.h,
+          height: 55.h,
           child: Text(
             text,
             style: TextStyle(

@@ -11,9 +11,11 @@ class TxtFormField extends StatelessWidget {
   final String prefixicon;
   final String? Function(String?)? validation;
   final Function(String)? onChanged;
+  final controller;
 
   const TxtFormField({
     Key? key,
+    this.controller,
     this.hintText,
     this.errorText,
     this.keyboardType,
@@ -42,6 +44,7 @@ class TxtFormField extends StatelessWidget {
             ),
           ),
           TextFormField(
+            controller: controller,
             validator: validation,
             decoration: InputDecoration(
               errorText: errorText,

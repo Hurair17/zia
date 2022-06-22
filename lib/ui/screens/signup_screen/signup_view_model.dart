@@ -1,9 +1,19 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:recrutment_help_app/core/constant/api_end_point.dart';
+import 'package:recrutment_help_app/core/services/auth_service.dart';
+import 'package:recrutment_help_app/ui/screens/login_screen/login.dart';
 
 import '../../../core/models/auth_model/signup_model.dart';
+import '../../../core/services/api_service.dart';
 
 class SignUpViewModel extends ChangeNotifier {
+  // final _appUrl = AppUrl();
+  // ApiService _apiService = ApiService();
   SignUpModel signUpModel = SignUpModel();
+  // AuthService _authService = AuthService();
+
+  // apiService
 
   String? nameValidation(String? value) {
     if (value!.isEmpty) {
@@ -46,4 +56,13 @@ class SignUpViewModel extends ChangeNotifier {
     }
     return null;
   }
+
+  // ApiService.registerUser(appUrl)
+  // ApiService().registerUser(){}
+  // apiService.
+  // Future<void> register(data) async {
+  //   String url = AppUrl.signUp;
+  //   final response = await _apiService.post(url: url, data: data);
+  // }
+
 }

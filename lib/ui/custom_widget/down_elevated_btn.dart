@@ -1,34 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recrutment_help_app/ui/screens/login_screen/login.dart';
+import 'package:recrutment_help_app/ui/screens/login_screen/login_view_model.dart';
 
 import '../../core/constant/color.dart';
 
 class DownElevetedButton extends StatelessWidget {
-  const DownElevetedButton({
+  DownElevetedButton({
     Key? key,
-    this.formKey,
-    this.link,
     this.buttonText,
+    this.ontap,
   }) : super(key: key);
 
-  final Widget? link;
+  final ontap;
   final String? buttonText;
-  final GlobalKey<FormState>? formKey;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        if (formKey == null) {
-          // return null;
-          Get.to(link);
-        } else {
-          if (formKey!.currentState!.validate()) {
-            Get.to(link);
-          } else {}
-        }
-      },
+      onPressed: ontap,
       style: ElevatedButton.styleFrom(
         primary: kprimaryColor,
         onPrimary: Colors.white,

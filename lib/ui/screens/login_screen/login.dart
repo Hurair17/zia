@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import 'package:recrutment_help_app/core/constant/color.dart';
+import 'package:recrutment_help_app/core/models/auth_model/signup_model.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_screen.dart';
 import 'package:recrutment_help_app/ui/screens/login_screen/login_view_model.dart';
 import 'package:recrutment_help_app/ui/screens/signup_screen/signup_screen.dart';
@@ -18,6 +19,8 @@ import '../../custom_widget/user_info_txt_form_field.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final emailcontroller = TextEditingController();
+  final passwordcontroler = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +55,7 @@ class LoginScreen extends StatelessWidget {
                                   hintText: 'Email or Phone Number',
                                   // errorText: 'Invalid email',
                                   prefixicon: 'assets/icons/email_icon.svg',
+                                  controller: emailcontroller,
                                   keyboardType: TextInputType.emailAddress,
                                   validation: value.emailValidation,
                                   onChanged: (val) {
@@ -60,6 +64,7 @@ class LoginScreen extends StatelessWidget {
                                 ),
                                 PassTxtFormField(
                                   hintText: 'Password',
+                                  controller: passwordcontroler,
                                   // errorText: 'Invalid Password',
                                   iconpath: 'assets/icons/pass_lock_icon.svg',
                                   keyboardType: TextInputType.emailAddress,
@@ -67,8 +72,6 @@ class LoginScreen extends StatelessWidget {
                                   onChanged: (val) {
                                     value.logInModel.password = val;
                                   },
-                                  control: TextEditingController(
-                                      text: value.logInModel.password),
                                 ),
                               ]),
                         ),
@@ -96,9 +99,12 @@ class LoginScreen extends StatelessWidget {
                           height: 38.h,
                         ),
                         DownElevetedButton(
-                          formKey: formKey,
-                          // link: (),
                           buttonText: 'Login',
+                          ontap: () async {
+                            if (formKey.currentState!.validate()) {
+                              print('valida');
+                            }
+                          },
                         ),
 
                         SizedBox(

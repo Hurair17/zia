@@ -19,4 +19,15 @@ class SignUpModel {
         confirmpassword: json["password_confirmation"],
         token: json["token"],
       );
+
+  toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['v'] = this.fullName;
+    data['email'] = this.email;
+    data['password'] = this.password;
+    data['password_confirmation'] = this.confirmpassword;
+    data['token'] = this.token;
+
+    return data;
+  }
 }

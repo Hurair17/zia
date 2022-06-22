@@ -1,6 +1,6 @@
-class AppUrl {
-  static const String baseUrl =
-      "https://antonxdemo.com/recruiter_help/public/api/";
+class EndPoints {
+  static const baseUrl = "https://antonxdemo.com/recruiter_help/public/api/";
 
-  static const String signUp = "${baseUrl}register";
+  static const signup = "${baseUrl}register";
+  static const login = "${baseUrl}login";
 }

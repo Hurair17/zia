@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_view_model.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/otp_screen.dart';
@@ -74,8 +75,11 @@ class ForgetPasswordScreen extends StatelessWidget {
                               height: 8.h,
                             ),
                             DownElevetedButton(
-                              formKey: formKey,
-                              link: const OtpScreen(),
+                              ontap: () async {
+                                if (formKey.currentState!.validate()) {
+                                  Get.to(const OtpScreen());
+                                }
+                              },
                               buttonText: 'Proceed',
                             ),
                           ],
