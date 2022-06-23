@@ -6,7 +6,9 @@ import '../../core/constant/color.dart';
 
 class LoginScreenEvletedBtnForSocialSites extends StatelessWidget {
   final String path;
+  final ontap;
   const LoginScreenEvletedBtnForSocialSites({
+    this.ontap,
     required this.path,
     Key? key,
   }) : super(key: key);
@@ -14,7 +16,7 @@ class LoginScreenEvletedBtnForSocialSites extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: ontap,
       style: ElevatedButton.styleFrom(
         primary: ksecondaryColorForBack,
         onPrimary: Colors.white,

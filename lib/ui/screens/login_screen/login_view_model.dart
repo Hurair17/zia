@@ -10,6 +10,8 @@ import 'package:recrutment_help_app/core/models/auth_model/login_model.dart';
 import 'package:recrutment_help_app/ui/screens/home/home_screen.dart';
 import 'package:recrutment_help_app/ui/screens/login_screen/login.dart';
 
+import '../../../core/enum/social_auth_type.dart';
+import '../../../core/models/responses/auth_response.dart';
 import '../../../core/other/base_view_model.dart';
 import '../../../core/services/auth_service.dart';
 import '../../custom_widget/dialoges/signup_error_dialoge.dart';
@@ -17,6 +19,8 @@ import '../../custom_widget/dialoges/signup_error_dialoge.dart';
 class LoginViewModel extends BaseViewModel {
   LogInModel logInModel = LogInModel();
   AuthService _authService = AuthService();
+
+  AuthResponse? response;
   String? emailValidation(String? value) {
     if (value!.isEmpty) {
       return 'Please Enter Your Email';
@@ -72,6 +76,29 @@ class LoginViewModel extends BaseViewModel {
       print("Sorry error occured=>${response.error.toString()}");
       Get.dialog(SignUpErrorDialog(
         errorMsg: response.error.toString(),
+      ));
+    }
+    setState(ViewState.idle);
+  }
+
+  loginWithSocial(SocialAuthType type) async {
+    setState(ViewState.loading);
+    if (type == SocialAuthType.google) {
+      response = await _authService.loginWithGoogle();
+    } else if (type == SocialAuthType.facebook) {
+      response = await _authService.loginWithFacebook();
+    } else if (type == SocialAuthType.apple) {
+      response = await _authService.loginWithApple();
+    }
+
+    if (response!.success == true) {
+      print("Login user successfully");
+      // clear();
+      Get.offAll(() => HomeScreen());
+    } else {
+      print("Sorry error occured=>${response!.error.toString()}");
+      Get.dialog(SignUpErrorDialog(
+        errorMsg: response!.error.toString(),
       ));
     }
     setState(ViewState.idle);

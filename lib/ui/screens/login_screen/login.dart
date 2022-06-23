@@ -10,6 +10,7 @@ import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_scree
 import 'package:recrutment_help_app/ui/screens/login_screen/login_view_model.dart';
 import 'package:recrutment_help_app/ui/screens/signup_screen/signup_screen.dart';
 
+import '../../../core/enum/social_auth_type.dart';
 import '../../../core/enum/view_state.dart';
 import '../../custom_widget/down_elevated_btn.dart';
 import '../../custom_widget/elevated_btn_for_social_sites.dart';
@@ -131,14 +132,25 @@ class LoginScreen extends StatelessWidget {
                           //Social Auth Buttons
                           Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 LoginScreenEvletedBtnForSocialSites(
+                                  ontap: () {
+                                    value.loginWithSocial(SocialAuthType.apple);
+                                  },
                                   path: 'assets/icons/apple.svg',
                                 ),
                                 LoginScreenEvletedBtnForSocialSites(
+                                  ontap: () {
+                                    value
+                                        .loginWithSocial(SocialAuthType.google);
+                                  },
                                   path: 'assets/icons/google.svg',
                                 ),
                                 LoginScreenEvletedBtnForSocialSites(
+                                  ontap: () {
+                                    value.loginWithSocial(
+                                        SocialAuthType.facebook);
+                                  },
                                   path: 'assets/icons/facebook.svg',
                                 ),
                               ]),
