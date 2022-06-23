@@ -1,4 +1,4 @@
-import 'package:recrutment_help_app/core/services/response/base_response.dart';
+import 'package:recrutment_help_app/core/models/responses/base_response/base_response.dart';
 
 class AuthResponse extends BaseResponse {
   String? accessToken;

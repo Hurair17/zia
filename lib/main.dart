@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:recrutment_help_app/ui/locator.dart';
 import 'package:recrutment_help_app/ui/screens/splash_screen/splash_screen.dart';
 
-void main() {
+Future<void> main() async {
+  await setupLocator();
   runApp(const GetMaterialApp(home: SafeArea(child: MyApp())));
 }
 

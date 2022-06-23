@@ -5,10 +5,12 @@ import 'package:provider/provider.dart';
 
 import 'package:recrutment_help_app/core/constant/color.dart';
 import 'package:recrutment_help_app/core/models/auth_model/signup_model.dart';
+import 'package:recrutment_help_app/ui/custom_widget/model_progress_hud.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_screen.dart';
 import 'package:recrutment_help_app/ui/screens/login_screen/login_view_model.dart';
 import 'package:recrutment_help_app/ui/screens/signup_screen/signup_screen.dart';
 
+import '../../../core/enum/view_state.dart';
 import '../../custom_widget/down_elevated_btn.dart';
 import '../../custom_widget/elevated_btn_for_social_sites.dart';
 import '../../custom_widget/password_txt_form_field.dart';
@@ -27,130 +29,134 @@ class LoginScreen extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => LoginViewModel(),
       child: Consumer<LoginViewModel>(builder: (context, value, child) {
-        return SafeArea(
-          child: Scaffold(
-            body: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const TopDesignForStartScreen(),
-                  SizedBox(
-                    height: 46.h,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 30.w, right: 30.w),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        textWidget(),
-                        Form(
-                          key: formKey,
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                TxtFormField(
-                                  hintText: 'Email or Phone Number',
-                                  // errorText: 'Invalid email',
-                                  prefixicon: 'assets/icons/email_icon.svg',
-                                  controller: emailcontroller,
-                                  keyboardType: TextInputType.emailAddress,
-                                  validation: value.emailValidation,
-                                  onChanged: (val) {
-                                    value.logInModel.email = val;
-                                  },
+        return ModalProgressHUD(
+          inAsyncCall: value.state == ViewState.loading,
+          child: SafeArea(
+            child: Scaffold(
+              body: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const TopDesignForStartScreen(),
+                    SizedBox(
+                      height: 46.h,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 30.w, right: 30.w),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          textWidget(),
+                          Form(
+                            key: formKey,
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  TxtFormField(
+                                    hintText: 'Email or Phone Number',
+                                    // errorText: 'Invalid email',
+                                    iconpath: 'assets/icons/email_icon.svg',
+                                    controller: emailcontroller,
+                                    keyboardType: TextInputType.emailAddress,
+                                    validation: value.emailValidation,
+                                    onChanged: (val) {
+                                      value.logInModel.email = val;
+                                    },
+                                  ),
+                                  PassTxtFormField(
+                                    hintText: 'Password',
+                                    controller: passwordcontroler,
+                                    // errorText: 'Invalid Password',
+                                    iconpath: 'assets/icons/pass_lock_icon.svg',
+                                    keyboardType: TextInputType.emailAddress,
+                                    validation: value.passwordValidation,
+                                    onChanged: (val) {
+                                      value.logInModel.password = val;
+                                    },
+                                  ),
+                                ]),
+                          ),
+                          SizedBox(
+                            height: 17.h,
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.to(ForgetPasswordScreen());
+                              },
+                              child: Text(
+                                'Forgot Password?',
+                                style: TextStyle(
+                                  color: kprimaryColor,
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w200,
                                 ),
-                                PassTxtFormField(
-                                  hintText: 'Password',
-                                  controller: passwordcontroler,
-                                  // errorText: 'Invalid Password',
-                                  iconpath: 'assets/icons/pass_lock_icon.svg',
-                                  keyboardType: TextInputType.emailAddress,
-                                  validation: value.passwordValidation,
-                                  onChanged: (val) {
-                                    value.logInModel.password = val;
-                                  },
-                                ),
-                              ]),
-                        ),
-                        SizedBox(
-                          height: 17.h,
-                        ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.to(ForgetPasswordScreen());
-                            },
-                            child: Text(
-                              'Forgot Password?',
-                              style: TextStyle(
-                                color: kprimaryColor,
-                                fontFamily: 'Poppins',
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w200,
                               ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 38.h,
-                        ),
-                        DownElevetedButton(
-                          buttonText: 'Login',
-                          ontap: () async {
-                            if (formKey.currentState!.validate()) {
-                              print('valida');
-                            }
-                          },
-                        ),
-
-                        SizedBox(
-                          height: 26.h,
-                        ),
-                        Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'or login with',
-                            style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 14.sp,
-                                color: ksecondaryColor),
+                          SizedBox(
+                            height: 38.h,
                           ),
-                        ),
-                        SizedBox(
-                          height: 26.h,
-                        ),
-                        //Social Auth Buttons
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
-                              LoginScreenEvletedBtnForSocialSites(
-                                path: 'assets/icons/apple.svg',
-                              ),
-                              LoginScreenEvletedBtnForSocialSites(
-                                path: 'assets/icons/google.svg',
-                              ),
-                              LoginScreenEvletedBtnForSocialSites(
-                                path: 'assets/icons/facebook.svg',
-                              ),
-                            ]),
-                        SizedBox(
-                          height: 43.h,
-                        ),
-                        SignUpLogInText(
-                          text: 'Don\'t have an account. ',
-                          color1: ksecondaryColor,
-                          btnText: 'Sign Up',
-                          btnColor: kprimaryColor,
-                          btnlink: SignUp(),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                          DownElevetedButton(
+                            buttonText: 'Login',
+                            ontap: () async {
+                              if (formKey.currentState!.validate()) {
+                                print('valida');
+                                value.loginWithEmailPassword();
+                              }
+                            },
+                          ),
+
+                          SizedBox(
+                            height: 26.h,
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              'or login with',
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14.sp,
+                                  color: ksecondaryColor),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 26.h,
+                          ),
+                          //Social Auth Buttons
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                LoginScreenEvletedBtnForSocialSites(
+                                  path: 'assets/icons/apple.svg',
+                                ),
+                                LoginScreenEvletedBtnForSocialSites(
+                                  path: 'assets/icons/google.svg',
+                                ),
+                                LoginScreenEvletedBtnForSocialSites(
+                                  path: 'assets/icons/facebook.svg',
+                                ),
+                              ]),
+                          SizedBox(
+                            height: 43.h,
+                          ),
+                          SignUpLogInText(
+                            text: 'Don\'t have an account. ',
+                            color1: ksecondaryColor,
+                            btnText: 'Sign Up',
+                            btnColor: kprimaryColor,
+                            btnlink: SignUp(),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),

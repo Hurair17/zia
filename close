@@ -1,0 +1,203 @@
+[33mcommit f61b17b18d41e87665d355248016f784a4f71c5a[m[33m ([m[1;36mHEAD -> [m[1;32mrha-32[m[33m)[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Tue Jun 21 17:37:50 2022 +0500
+
+    API integration continue
+
+[33mcommit 40a927b1ef6daccdd37cfd7ba4f71b027e1342fd[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Tue Jun 21 15:23:05 2022 +0500
+
+    Feat: API end point and Model created
+
+[33mcommit ea58a207fe26a6cb21731b89909860b2a3d95eaf[m[33m ([m[1;32mdev[m[33m)[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Tue Jun 21 14:48:07 2022 +0500
+
+    Fix: Text form field onFocus boundry color change
+
+[33mcommit 5cb50f43047943edc1184a00bdccbad4bbb4c8dd[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Tue Jun 21 14:42:57 2022 +0500
+
+    Fix: Top Logo SignUp and Login border color get fix
+
+[33mcommit 9198b266a7120ea11f73d1772cf98446118c6b24[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Sat Jun 18 16:05:33 2022 +0500
+
+    Refactor and Warning Removed
+
+[33mcommit 33790ad5ebab78d00a85634ce3b651dae80eb397[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Sat Jun 18 15:53:42 2022 +0500
+
+    Shadow Added to TextFormFields
+
+[33mcommit ee69b80d7e782e9676957f66d59b9ad198589643[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Sat Jun 18 15:28:59 2022 +0500
+
+    Forget Password all Screens refactor
+
+[33mcommit f0788e76f4c336908f644bef2ad2396f0580d7e5[m[33m ([m[1;32mrha-14[m[33m)[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Sat Jun 18 14:50:18 2022 +0500
+
+    Moving to dev
+
+[33mcommit c3029e4cb2d9cbce21a020ce9de7eb137b64be37[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Sat Jun 18 14:46:45 2022 +0500
+
+    LogIn SignUp and Forget Password Screen Refactor
+
+[33mcommit 017ce6566720fc7777ae8bede6fd0db01b5de990[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Fri Jun 17 17:13:23 2022 +0500
+
+    Onboarding Screen 1 done 2 continue
+
+[33mcommit 7337f91fc6c1ea3c0eb79eb466ed97cf7dfae0a0[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Fri Jun 17 13:10:24 2022 +0500
+
+    Password Validation Error Change
+
+[33mcommit a214a4929b03dfe84503573eacae1acbe6a180e7[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Fri Jun 17 12:17:18 2022 +0500
+
+    Login SignUp Forget Password Screen Design Fix
+
+[33mcommit 59bfa2c2e6f44e9eafd554a848fca3c3c1be6590[m[33m ([m[1;32mforget-password[m[33m)[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Thu Jun 16 16:17:34 2022 +0500
+
+    Forget Password Process All UI done
+
+[33mcommit 2e5fcf2a27cfe11068b267df7c5d640d3c52dc79[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Thu Jun 16 13:38:01 2022 +0500
+
+    Password Successfully changed Screen UI done
+
+[33mcommit f75fd7d8950e781706a9fc2f34cc376a3f7b9e1d[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Thu Jun 16 13:32:14 2022 +0500
+
+    Reset Password Ui done
+
+[33mcommit db2b6228de4b1f07343b15683469e88a491cb66f[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Thu Jun 16 13:25:03 2022 +0500
+
+    Model created for reset password
+
+[33mcommit 10fcb5d6b57e9de5cec03196b4921335a800f767[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Thu Jun 16 13:22:13 2022 +0500
+
+    Reset Password Screen done
+
+[33mcommit 304203d3057ed060c0f557af3538ffc0b212023c[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Thu Jun 16 13:16:23 2022 +0500
+
+    Reset Password Screen is going
+
+[33mcommit e01e3f8748b63b8e3d097c999dc3a5acffd0d861[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Thu Jun 16 13:03:51 2022 +0500
+
+    Verification Successful Screen Added
+
+[33mcommit 0ff3402db7a8726a99e8f0a176df44c69f0fb0cd[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Wed Jun 15 17:29:11 2022 +0500
+
+    OTP Screen UI done
+
+[33mcommit 37532e30132e63517ded4533c48f2b0a53ad943d[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Wed Jun 15 16:35:10 2022 +0500
+
+    Forget password screen model created
+
+[33mcommit d53cc750b958f5fed446c6bbcdb699375cbac7a6[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Wed Jun 15 16:21:45 2022 +0500
+
+    Forget Screen UI
+
+[33mcommit e836b7a640ab21dcca3ce6b37b0182ae18535f24[m[33m ([m[1;32mrha-10[m[33m)[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Wed Jun 15 16:10:19 2022 +0500
+
+    Login View Model validation done fix
+
+[33mcommit f4e43f96a890602b4f3d4234702a7b4f68fad640[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Wed Jun 15 13:50:50 2022 +0500
+
+    SignUp Screen View Model Implemented
+
+[33mcommit aadb7ee10e4c83dcf891eb07c0b4bd462673b67c[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Wed Jun 15 12:55:17 2022 +0500
+
+    SignUp ViewModel created
+
+[33mcommit 56d7eb37e800e7b47aa9c607b2505d981ca07b9e[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Wed Jun 15 12:51:33 2022 +0500
+
+    SignUp Screen UI design done
+
+[33mcommit 288993049f72198eac735f131972a4f40782da94[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Wed Jun 15 11:38:11 2022 +0500
+
+    sign up screen done
+
+[33mcommit 48e008b4ffc829afa88515550cc84754f19885c5[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Wed Jun 15 10:51:47 2022 +0500
+
+    signup model created
+
+[33mcommit c3ee80ae458bc54a9e79a86cb2ffce0e39ce21b1[m[33m ([m[1;32mmaster[m[33m)[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Wed Jun 15 10:42:22 2022 +0500
+
+    login Screen refactor
+
+[33mcommit 82432281b9d6116f6625b36a486552f653175869[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Wed Jun 15 10:17:34 2022 +0500
+
+    splash screen route to different screen after onboarding screen
+
+[33mcommit fc7370571e63e979931384193e759082905009da[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Tue Jun 14 19:19:28 2022 +0500
+
+    implementation of splash background feature are countinue
+
+[33mcommit 0056e15fd9fefc200614d068611f14834aed1f77[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Tue Jun 14 18:34:21 2022 +0500
+
+    Social Sites Button Create
+
+[33mcommit ab0ff3f9c0b22b66bc8b67fae6bdf49d97f75478[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Tue Jun 14 17:19:01 2022 +0500
+
+    login screen model created
+
+[33mcommit 2eaa56b7493edbb49edd261bafc8baedcda26316[m
+Author: “Hurair17” <[hurairmohammad17@gmail.com]>
+Date:   Tue Jun 14 14:59:44 2022 +0500
+
+    Splash Screen Design done & Login Screen Continue

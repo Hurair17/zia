@@ -1,5 +1,5 @@
 class BaseResponse {
-  late bool success;
+  bool? success;
   String? error;
 
   BaseResponse(this.success, {this.error});

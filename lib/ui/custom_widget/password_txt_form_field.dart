@@ -5,16 +5,16 @@ import 'package:recrutment_help_app/core/constant/color.dart';
 
 // ignore: must_be_immutable
 class PassTxtFormField extends StatefulWidget {
-  String? hintText;
-  String? errorText;
-  TextInputType? keyboardType;
+  final String? hintText;
+  final String? errorText;
+  final TextInputType? keyboardType;
   // IconData? prefixicon;
-  String iconpath;
+  final String iconpath;
   final String? Function(String?)? validation;
   final Function(String)? onChanged;
   final TextEditingController? controller;
 
-  PassTxtFormField({
+  const PassTxtFormField({
     this.controller,
     this.errorText,
     this.keyboardType,

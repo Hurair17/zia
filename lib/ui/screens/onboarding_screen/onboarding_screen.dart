@@ -73,11 +73,11 @@ class OnboardingScreen extends StatelessWidget {
                       controller: controller,
                       children: const [
                         OnBoardScreen(
-                          path: 'assets/icons/onboard_1.svg',
+                          path: 'assets/icons/onboard1.png',
                           text: 'Is recruting manually a hectic process?',
                         ),
                         OnBoardScreen(
-                          path: 'assets/icons/onboard_2.svg',
+                          path: 'assets/icons/onboard2.png',
                           text: 'Take your hiring test at home and get hired!',
                         ),
                       ],
@@ -136,7 +136,14 @@ class OnBoardScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SvgPicture.asset(
+        // SvgPicture.asset(
+        //   path,
+
+        //   width: 275.w,
+        //   height: 196.h,
+        //   fit: BoxFit.scaleDown,
+        // ),
+        Image.asset(
           path,
           width: 275.w,
           height: 196.h,
