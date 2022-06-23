@@ -13,12 +13,11 @@ import '../models/responses/user_profile_responses.dart';
 class DatabaseService {
   final ApiServices _apiServices = ApiServices();
 
-  // Future<UserProfileResponse> getUserProfile() async {
-  //   final RequestResponse response =
-  //       await _apiServices.post(url: '${EndPoints.baseUrl}${EndPoints.signup}');
-  //   return UserProfileResponse.fromJson(response.data);
-
-  // }
+  Future<UserProfileResponse> getUserProfile() async {
+    final RequestResponse response =
+        await _apiServices.post(url: '${EndPoints.baseUrl}${EndPoints.login}');
+    return UserProfileResponse.fromJson(response.data);
+  }
 
   //   Future<BaseResponse> updateFcmToken(String deviceId, String token) async {
   //   final RequestResponse response = await _apiServices.post(

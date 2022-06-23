@@ -6,7 +6,9 @@ import 'package:logger/logger.dart';
 import 'package:recrutment_help_app/core/models/auth_model/login_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/signup_model.dart';
 
+import '../../ui/custom_widget/dialoges/auth_dialoge.dart';
 import '../../ui/locator.dart';
+import '../models/other_model/user_profile.dart';
 import '../models/responses/auth_response.dart';
 import '../models/responses/user_profile_responses.dart';
 import 'database_service.dart';
@@ -37,7 +39,7 @@ class AuthService {
   final _dbService = locator<DatabaseService>();
   // final GoogleSignIn _googleSignIn = GoogleSignIn();
   // final _facebookLogin = FacebookAuth.instance;
-  // UserProfile? userProfile;
+  UserProfile? userProfile;
 
   String? fcmToken;
   late bool isNotificationTurnOn;
@@ -61,17 +63,17 @@ class AuthService {
     }
   }
 
-  // _getUserProfile() async {
-  //   UserProfileResponse response = await _dbService.getUserProfile();
-  //   if (response.success!) {
-  //     // final userProfile = response.profile;
-  //     // print('Got User Data: ${userProfile!.toJson()}');
-  //   } else {
-  //     //TODO: Update the design of success dialogue according to the app design.
-  //     // Get.dialog(AuthDialog(title: 'Response', message: response.error!));
-  //     print('Pakisatan: ${response.error}');
-  //   }
-  // }
+  _getUserProfile() async {
+    UserProfileResponse response = await _dbService.getUserProfile();
+    if (response.success!) {
+      final userProfile = response.profile;
+      print('Got User Data: ${userProfile!.toJson()}');
+    } else {
+      //TODO: Update the design of success dialogue according to the app design.
+      Get.dialog(AuthDialog(title: 'Response', message: response.error!));
+      print('Pakisatan: ${response.error}');
+    }
+  }
 
   ///
   /// Updating FCM Token here...
