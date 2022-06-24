@@ -10,6 +10,7 @@ import '../../../core/models/auth_model/signup_model.dart';
 import '../../../core/other/base_view_model.dart';
 import '../../../core/services/api_service.dart';
 import '../../custom_widget/dialoges/signup_error_dialoge.dart';
+import '../otp_verification_screen/otp_screen.dart';
 
 class SignUpViewModel extends BaseViewModel {
   // final _appUrl = AppUrl();
@@ -76,7 +77,7 @@ class SignUpViewModel extends BaseViewModel {
     if (response.success) {
       print("Created account successfully");
       // clear();
-      Get.offAll(() => HomeScreen());
+      Get.to(() => OtpScreenVerify());
     } else {
       print("Sorry error occured=>${response.error.toString()}");
       Get.dialog(SignUpErrorDialog(

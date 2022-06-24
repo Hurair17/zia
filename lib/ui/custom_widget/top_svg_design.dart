@@ -11,7 +11,7 @@ class TopDesignForStartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       size: Size(
-          1.sw,
+          double.infinity,
           (1.sw * 0.3925233644859813)
               .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
       painter: RPSCustomPainter(),

@@ -1,7 +1,10 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:recrutment_help_app/core/models/auth_model/login_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/signup_model.dart';
@@ -37,8 +40,8 @@ class AuthService {
   late bool isLogin;
   final _localStorageService = locator<LocalStorageService>();
   final _dbService = locator<DatabaseService>();
-  // final GoogleSignIn _googleSignIn = GoogleSignIn();
-  // final _facebookLogin = FacebookAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final _facebookLogin = FacebookAuth.instance;
   UserProfile? userProfile;
 
   String? fcmToken;
@@ -125,5 +128,48 @@ class AuthService {
   ///
   /// Google SignIn
   ///
+  ///
+  Future<AuthResponse> loginWithGoogle() async {
+    late AuthResponse response;
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser!.authentication;
+      debugPrint('accessToken => ' + googleAuth.accessToken!);
+      debugPrint('idToken => ' + googleAuth.idToken!);
+      response = await _dbService.loginWithGoogle(googleAuth.accessToken!);
+      if (response.success!) {
+        if (response.success!) {
+          _localStorageService.setAccessToken = response.accessToken;
+          isNotificationTurnOn = _localStorageService.notificationFlag != null;
+          await _getUserProfile();
+          // if (isNotificationTurnOn) await _updateFcmToken();
+        }
+      }
+      return response;
+    } catch (e) {
+      print('Exception @sighupWithGoogle: $e');
+    }
+    return response;
+  }
 
+  loginWithFacebook() async {
+    AuthResponse? response;
+    try {
+      final LoginResult result = await _facebookLogin.login();
+      final AccessToken accessToken = result.accessToken!;
+      print("Facebook access token => ${accessToken.token}");
+      response = await _dbService.loginWithFacebook(accessToken.token);
+      if (response.success!) {
+        _localStorageService.setAccessToken = response.accessToken;
+        isNotificationTurnOn = _localStorageService.notificationFlag != null;
+        await _getUserProfile();
+        // if (isNotificationTurnOn) await _updateFcmToken();
+      }
+      return response;
+    } catch (e) {
+      print('Exception @loginWithFacebook: $e');
+    }
+    return response;
+  }
 }

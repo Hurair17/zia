@@ -20,7 +20,6 @@ class LoginViewModel extends BaseViewModel {
   LogInModel logInModel = LogInModel();
   AuthService _authService = AuthService();
 
-  AuthResponse? response;
   String? emailValidation(String? value) {
     if (value!.isEmpty) {
       return 'Please Enter Your Email';
@@ -62,13 +61,14 @@ class LoginViewModel extends BaseViewModel {
   //     debugPrint('Error Pakistan $e');
   //   }
   // }
+  late AuthResponse response;
   loginWithEmailPassword() async {
     debugPrint("SIGNUPBODY is =====> ${logInModel.toJson()}");
 
     setState(ViewState.loading);
 
-    final response = await _authService.loginWithEmailAndPassword(logInModel);
-    if (response.success) {
+    response = await _authService.loginWithEmailAndPassword(logInModel);
+    if (response.success!) {
       print("Login user successfully");
       // clear();
       Get.offAll(() => HomeScreen());
@@ -88,17 +88,17 @@ class LoginViewModel extends BaseViewModel {
     } else if (type == SocialAuthType.facebook) {
       response = await _authService.loginWithFacebook();
     } else if (type == SocialAuthType.apple) {
-      response = await _authService.loginWithApple();
+      // response = await _authService.loginWithApple();
     }
 
-    if (response!.success == true) {
+    if (response.success!) {
       print("Login user successfully");
       // clear();
       Get.offAll(() => HomeScreen());
     } else {
-      print("Sorry error occured=>${response!.error.toString()}");
+      print("Sorry error occured=>${response.error.toString()}");
       Get.dialog(SignUpErrorDialog(
-        errorMsg: response!.error.toString(),
+        errorMsg: response.error.toString(),
       ));
     }
     setState(ViewState.idle);

@@ -9,7 +9,7 @@ GetIt locator = GetIt.instance;
 setupLocator() async {
   // final _instance = await LocalStorageService.getInstance();
   // locator.registerSingleton(_instance);
-  locator.registerSingleton(LocalStorageService());
+  locator.registerSingleton<LocalStorageService>(LocalStorageService());
 
   // locator.registerSingleton(NotificationsService());
   locator.registerLazySingleton<DatabaseService>(() => DatabaseService());

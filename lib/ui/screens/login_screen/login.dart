@@ -37,11 +37,11 @@ class LoginScreen extends StatelessWidget {
               body: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const TopDesignForStartScreen(),
                     SizedBox(
-                      height: 46.h,
+                      height: 40.h,
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: 30.w, right: 30.w),
@@ -134,20 +134,25 @@ class LoginScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 LoginScreenEvletedBtnForSocialSites(
-                                  ontap: () {
+                                  ontap: () async {
+                                    // value.loginWithGoogle();
+                                    print('valida');
                                     value.loginWithSocial(SocialAuthType.apple);
                                   },
                                   path: 'assets/icons/apple.svg',
                                 ),
                                 LoginScreenEvletedBtnForSocialSites(
-                                  ontap: () {
+                                  ontap: () async {
+                                    print('Google');
                                     value
                                         .loginWithSocial(SocialAuthType.google);
                                   },
                                   path: 'assets/icons/google.svg',
                                 ),
                                 LoginScreenEvletedBtnForSocialSites(
-                                  ontap: () {
+                                  ontap: () async {
+                                    print('Facebook');
+
                                     value.loginWithSocial(
                                         SocialAuthType.facebook);
                                   },

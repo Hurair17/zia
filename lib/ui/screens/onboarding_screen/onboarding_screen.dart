@@ -31,7 +31,8 @@ class OnboardingScreen extends StatelessWidget {
                   effect: ExpandingDotsEffect(
                       dotHeight: 9.h,
                       dotWidth: 12.w,
-                      dotColor: ksecondaryColorForBack,
+                      strokeWidth: 1.0,
+                      dotColor: ksmootheindicator,
                       activeDotColor: kprimaryColor),
                 ),
               ),
@@ -40,7 +41,7 @@ class OnboardingScreen extends StatelessWidget {
                   Stack(
                     children: [
                       SizedBox(
-                        height: 140.h,
+                        height: 135.h,
                         width: double.infinity,
                       ),
                       SvgPicture.asset(
@@ -85,7 +86,7 @@ class OnboardingScreen extends StatelessWidget {
                   ),
                   Stack(children: [
                     SizedBox(
-                      height: 178.h,
+                      height: 174.h,
                       width: double.infinity,
                     ),
                     Positioned(
@@ -101,7 +102,7 @@ class OnboardingScreen extends StatelessWidget {
                             // Get.to(widget);
                             if (index == 0) {
                               controller.nextPage(
-                                  duration: Duration(milliseconds: 500),
+                                  duration: const Duration(milliseconds: 500),
                                   curve: Curves.easeIn);
                               index++;
                             } else {
@@ -110,8 +111,8 @@ class OnboardingScreen extends StatelessWidget {
                           },
                           icon: SvgPicture.asset(
                             'assets/icons/arrow.svg',
-                            height: 43.h,
-                            width: 43.w,
+                            height: 40.h,
+                            width: 40.w,
                           )),
                     ),
                   ]),
@@ -136,30 +137,23 @@ class OnBoardScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // SvgPicture.asset(
-        //   path,
-
-        //   width: 275.w,
-        //   height: 196.h,
-        //   fit: BoxFit.scaleDown,
-        // ),
         Image.asset(
           path,
           width: 275.w,
-          height: 196.h,
+          height: 192.h,
           fit: BoxFit.scaleDown,
         ),
         SizedBox(
-          height: 144.h,
+          height: 140.h,
         ),
         SizedBox(
-          width: 203.w,
-          height: 55.h,
+          width: 233.w,
+          height: 70.h,
           child: Text(
             text,
             style: TextStyle(
                 color: kprimaryColor,
-                fontSize: 20.sp,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w600),
             textAlign: TextAlign.center,
           ),

@@ -46,6 +46,14 @@ class DatabaseService {
     return AuthResponse.fromJson(response.data);
   }
 
+  Future<AuthResponse> loginWithFacebook(String accessToken) async {
+    final RequestResponse response = await _apiServices.post(
+      url: '${EndPoints.baseUrl}${EndPoints.loginWithFacebook}',
+      data: {'accessToken': accessToken},
+    );
+    return AuthResponse.fromJson(response.data);
+  }
+
   // Future<AuthResponse> resetPassword(ResetPasswordBody body) async {
   //   final RequestResponse response = await _apiServices.post(
   //     url: '${EndPoints.baseUrl}${EndPoints.reset_password}',
@@ -53,4 +61,12 @@ class DatabaseService {
   //   );
   //   return AuthResponse.fromJson(response.data);
   // }
+
+  Future<AuthResponse> loginWithGoogle(String accessToken) async {
+    final RequestResponse response = await _apiServices.post(
+      url: '${EndPoints.baseUrl}${EndPoints.loginWithGoogle}',
+      data: {'accessToken': accessToken},
+    );
+    return AuthResponse.fromJson(response.data);
+  }
 }
