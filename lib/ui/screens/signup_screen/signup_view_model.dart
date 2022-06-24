@@ -1,22 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:recrutment_help_app/core/constant/api_end_point.dart';
 import 'package:recrutment_help_app/core/enum/view_state.dart';
+import 'package:recrutment_help_app/core/models/auth_model/otp_request_model.dart';
 import 'package:recrutment_help_app/core/services/auth_service.dart';
 import 'package:recrutment_help_app/ui/screens/home/home_screen.dart';
 import 'package:recrutment_help_app/ui/screens/login_screen/login.dart';
 
+import '../../../core/models/auth_model/otp_model.dart';
 import '../../../core/models/auth_model/signup_model.dart';
 import '../../../core/other/base_view_model.dart';
 import '../../../core/services/api_service.dart';
 import '../../custom_widget/dialoges/signup_error_dialoge.dart';
+import '../../locator.dart';
 import '../otp_verification_screen/otp_screen.dart';
 
 class SignUpViewModel extends BaseViewModel {
   // final _appUrl = AppUrl();
   // ApiService _apiService = ApiService();
   SignUpModel signUpModel = SignUpModel();
-  AuthService _authService = AuthService();
+  OtpRequestModel otpRequestModel = OtpRequestModel();
+  final AuthService _authService = AuthService();
+  final otpModel = locator<OtpModel>();
+
+  final log = Logger();
 
   // apiService
 
@@ -71,18 +79,29 @@ class SignUpViewModel extends BaseViewModel {
   // }
 
   createNewAccount() async {
-    debugPrint("SIGNUPBODY is =====> ${signUpModel.toJson()}");
+    log.e("SIGNUPBODY is =====> ${signUpModel.toJson()}");
+    log.e('This is email ${otpRequestModel.toJson()}');
+    log.e('This is email ${otpModel.email}');
+
     setState(ViewState.loading);
     final response = await _authService.signupWithEmailAndPassword(signUpModel);
-    if (response.success) {
-      print("Created account successfully");
+    final otpresponse = await _authService.otpRequest(otpRequestModel);
+
+    if (response.success && otpresponse.success) {
       // clear();
-      Get.to(() => OtpScreenVerify());
+      Get.to(() => const OtpScreenVerify());
     } else {
-      print("Sorry error occured=>${response.error.toString()}");
-      Get.dialog(SignUpErrorDialog(
-        errorMsg: response.error.toString(),
-      ));
+      // print("Sorry error occured=>${response.error.toString()}");
+      // print("OTP error occured=>${otpresponse.error.toString()}");
+      if (!response.success) {
+        Get.dialog(SignUpErrorDialog(
+          errorMsg: response.error.toString(),
+        ));
+      } else {
+        Get.dialog(SignUpErrorDialog(
+          errorMsg: otpresponse.error.toString(),
+        ));
+      }
     }
     setState(ViewState.idle);
   }

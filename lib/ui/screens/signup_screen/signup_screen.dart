@@ -90,6 +90,8 @@ class SignUp extends StatelessWidget {
                               validation: value.emailValidation,
                               onChanged: (val) {
                                 value.signUpModel.email = val;
+                                value.otpRequestModel.email = val;
+                                value.otpModel.email = val;
                               },
                               controller: emailcontroller,
                             ),
@@ -122,7 +124,6 @@ class SignUp extends StatelessWidget {
                             DownElevetedButton(
                               ontap: () async {
                                 if (formKey.currentState!.validate()) {
-                                  // print('valida');
                                   if (formKey.currentState!.validate()) {
                                     await value.createNewAccount();
                                   }

@@ -7,12 +7,15 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:recrutment_help_app/core/models/auth_model/login_model.dart';
+import 'package:recrutment_help_app/core/models/auth_model/otp_model.dart';
+import 'package:recrutment_help_app/core/models/auth_model/otp_request_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/signup_model.dart';
 
 import '../../ui/custom_widget/dialoges/auth_dialoge.dart';
 import '../../ui/locator.dart';
 import '../models/other_model/user_profile.dart';
 import '../models/responses/auth_response.dart';
+import '../models/responses/base_response/string_response_model.dart';
 import '../models/responses/user_profile_responses.dart';
 import 'database_service.dart';
 import 'device_info_service.dart';
@@ -98,6 +101,38 @@ class AuthService {
       _localStorageService.setAccessToken =
           response.accessToken; //updating access token
       isNotificationTurnOn = _localStorageService.notificationFlag != null;
+      // await _getUserProfile();
+
+      // await _updateFcmToken();
+    }
+    return response;
+  }
+
+  otpRequest(OtpRequestModel body) async {
+    late StringResponse response;
+    response = await _dbService.otpRequest(body);
+    if (response.success!) {
+      // this.userProfile = UserProfile.fromJson(body.toJson());
+      _localStorageService.setAccessToken =
+          response.accessToken; //updating access token
+      isNotificationTurnOn = _localStorageService.notificationFlag != null;
+      print('OTP REquest Screen ${response.success}');
+      // await _getUserProfile();
+
+      // await _updateFcmToken();
+    }
+    return response;
+  }
+
+  otpVerify(OtpModel body) async {
+    late StringResponse response;
+    response = await _dbService.otpVerify(body);
+    if (response.success!) {
+      // this.userProfile = UserProfile.fromJson(body.toJson());
+      _localStorageService.setAccessToken =
+          response.accessToken; //updating access token
+      isNotificationTurnOn = _localStorageService.notificationFlag != null;
+      print('OTP REquest Screen ${response.success}');
       // await _getUserProfile();
 
       // await _updateFcmToken();

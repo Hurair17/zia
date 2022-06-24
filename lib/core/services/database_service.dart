@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:recrutment_help_app/core/models/auth_model/login_model.dart';
+import 'package:recrutment_help_app/core/models/auth_model/otp_model.dart';
+import 'package:recrutment_help_app/core/models/auth_model/otp_request_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/signup_model.dart';
 import 'package:recrutment_help_app/core/models/responses/base_response/base_response.dart';
 import 'package:recrutment_help_app/core/services/api_service.dart';
@@ -8,6 +10,7 @@ import '../constant/api_end_point.dart';
 import '../models/body/reset_password_body.dart';
 import '../models/responses/auth_response.dart';
 import '../models/responses/base_response/request_response.dart';
+import '../models/responses/base_response/string_response_model.dart';
 import '../models/responses/user_profile_responses.dart';
 
 class DatabaseService {
@@ -44,6 +47,30 @@ class DatabaseService {
       data: FormData.fromMap(body.toJson()),
     );
     return AuthResponse.fromJson(response.data);
+  }
+
+  // Future<AuthResponse> otpRequest(OtpRequestModel body) async {
+  //   final RequestResponse response = await _apiServices.post(
+  //     url: '${EndPoints.baseUrl}${EndPoints.otpRequest}',
+  //     data: FormData.fromMap(body.toJson()),
+  //   );
+  //   return AuthResponse.fromJson(response.data);
+  // }
+
+  Future<StringResponse> otpRequest(OtpRequestModel body) async {
+    final RequestResponse response = await _apiServices.post(
+      url: '${EndPoints.baseUrl}${EndPoints.otpRequest}',
+      data: FormData.fromMap(body.toJson()),
+    );
+    return StringResponse.fromJson(response.data);
+  }
+
+  Future<StringResponse> otpVerify(OtpModel body) async {
+    final RequestResponse response = await _apiServices.post(
+      url: '${EndPoints.baseUrl}${EndPoints.otpVerify}',
+      data: FormData.fromMap(body.toJson()),
+    );
+    return StringResponse.fromJson(response.data);
   }
 
   Future<AuthResponse> loginWithFacebook(String accessToken) async {

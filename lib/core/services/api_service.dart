@@ -45,7 +45,7 @@ class ApiServices {
   Future<RequestResponse> post({required String url, data}) async {
     Dio dio = await launchDio();
     final response = await dio.post('$url', data: data).catchError((e) {
-      debugPrint('Unexpected Error');
+      debugPrint('Unexpected Error ${e.toString()}');
     });
     if (response.statusCode == 200) {
       return RequestResponse.fromJson(response.data);

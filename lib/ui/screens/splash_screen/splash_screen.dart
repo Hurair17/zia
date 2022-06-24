@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     bool flag = await getVisitingFlag();
     setVisitingFlag();
     if (flag == true) {
-      Get.offAll(OnboardingScreen());
+      Get.offAll(LoginScreen());
     } else {
       Get.offAll(OnboardingScreen());
     }

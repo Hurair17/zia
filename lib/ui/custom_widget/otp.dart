@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 import 'package:recrutment_help_app/core/constant/color.dart';
+import 'package:recrutment_help_app/core/models/auth_model/otp_model.dart';
+import 'package:recrutment_help_app/ui/custom_widget/down_elevated_btn.dart';
+
+import '../screens/otp_verification_screen/otp_verify_screen.dart';
 
 class FilledRoundedPinPut extends StatefulWidget {
   const FilledRoundedPinPut({Key? key}) : super(key: key);
@@ -17,6 +22,7 @@ class FilledRoundedPinPut extends StatefulWidget {
 class _FilledRoundedPinPutState extends State<FilledRoundedPinPut> {
   final controller = TextEditingController();
   final focusNode = FocusNode();
+  final otpModel = OtpModel();
 
   @override
   void dispose() {
@@ -25,7 +31,7 @@ class _FilledRoundedPinPutState extends State<FilledRoundedPinPut> {
     super.dispose();
   }
 
-  bool showError = false;
+  bool showError = true;
 
   @override
   Widget build(BuildContext context) {
@@ -48,30 +54,48 @@ class _FilledRoundedPinPutState extends State<FilledRoundedPinPut> {
       ),
     );
 
-    return SizedBox(
-      height: 68,
-      child: Pinput(
-        length: length,
-        controller: controller,
-        focusNode: focusNode,
-        defaultPinTheme: defaultPinTheme,
-        onCompleted: (pin) {
-          setState(() => showError = pin != '5555');
-        },
-        focusedPinTheme: defaultPinTheme.copyWith(
-          height: 68,
-          width: 64,
-          decoration: defaultPinTheme.decoration!.copyWith(
-            border: Border.all(color: borderColor),
+    return Column(
+      children: [
+        SizedBox(
+          child: Pinput(
+            length: length,
+            controller: controller,
+            focusNode: focusNode,
+            defaultPinTheme: defaultPinTheme,
+            onCompleted: (pin) {
+              // setState(() => showError = pin != '5555');
+              otpModel.otp = pin;
+            },
+            focusedPinTheme: defaultPinTheme.copyWith(
+              height: 68,
+              width: 64,
+              decoration: defaultPinTheme.decoration!.copyWith(
+                border: Border.all(color: borderColor),
+              ),
+            ),
+            errorPinTheme: defaultPinTheme.copyWith(
+              decoration: BoxDecoration(
+                color: errorColor,
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
           ),
         ),
-        errorPinTheme: defaultPinTheme.copyWith(
-          decoration: BoxDecoration(
-            color: errorColor,
-            borderRadius: BorderRadius.circular(8),
-          ),
+        SizedBox(
+          height: 28.h,
         ),
-      ),
+
+        //Button to verify otp
+        DownElevetedButton(
+          // formKey: formKey,
+          ontap: () async {
+            // Get.to(EmailVerifyScreen());
+            print('value = ${otpModel.otp}');
+          },
+
+          buttonText: 'Verify Code',
+        ),
+      ],
     );
   }
 }

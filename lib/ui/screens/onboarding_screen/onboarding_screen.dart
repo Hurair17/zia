@@ -148,7 +148,6 @@ class OnBoardScreen extends StatelessWidget {
         ),
         SizedBox(
           width: 233.w,
-          height: 70.h,
           child: Text(
             text,
             style: TextStyle(
