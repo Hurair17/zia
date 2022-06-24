@@ -41,13 +41,14 @@ import 'local_storage_services.dart';
 
 class AuthService {
   late bool isLogin;
+  late bool otpVerified;
   final _localStorageService = locator<LocalStorageService>();
   final _dbService = locator<DatabaseService>();
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final _facebookLogin = FacebookAuth.instance;
   UserProfile? userProfile;
 
-  String? fcmToken;
+  // String? fcmToken;
   late bool isNotificationTurnOn;
   static final Logger log = Logger();
 
@@ -59,10 +60,11 @@ class AuthService {
   ///
   doSetup() async {
     isLogin = _localStorageService.accessToken != null;
+    otpVerified = _localStorageService.otpAccessToken != null;
     if (isLogin) {
       isNotificationTurnOn = _localStorageService.notificationFlag != null;
       log.d('User is already logged-in');
-      // await _getUserProfile();
+      await _getUserProfile();
       // await _updateFcmToken();
     } else {
       log.d('User is not logged-in');
@@ -98,8 +100,8 @@ class AuthService {
     response = await _dbService.createAccount(body);
     if (response.success!) {
       // this.userProfile = UserProfile.fromJson(body.toJson());
-      _localStorageService.setAccessToken =
-          response.accessToken; //updating access token
+      // _localStorageService.setAccessToken =
+      //     response.accessToken; //updating access token
       isNotificationTurnOn = _localStorageService.notificationFlag != null;
       // await _getUserProfile();
 
@@ -113,7 +115,7 @@ class AuthService {
     response = await _dbService.otpRequest(body);
     if (response.success!) {
       // this.userProfile = UserProfile.fromJson(body.toJson());
-      _localStorageService.setAccessToken =
+      _localStorageService.setOtpAccessToken =
           response.accessToken; //updating access token
       isNotificationTurnOn = _localStorageService.notificationFlag != null;
       print('OTP REquest Screen ${response.success}');
@@ -164,7 +166,8 @@ class AuthService {
   /// Google SignIn
   ///
   ///
-  Future<AuthResponse> loginWithGoogle() async {
+  // Future<AuthResponse>
+  loginWithGoogle() async {
     late AuthResponse response;
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
@@ -172,20 +175,20 @@ class AuthService {
           await googleUser!.authentication;
       debugPrint('accessToken => ' + googleAuth.accessToken!);
       debugPrint('idToken => ' + googleAuth.idToken!);
-      response = await _dbService.loginWithGoogle(googleAuth.accessToken!);
-      if (response.success!) {
-        if (response.success!) {
-          _localStorageService.setAccessToken = response.accessToken;
-          isNotificationTurnOn = _localStorageService.notificationFlag != null;
-          await _getUserProfile();
-          // if (isNotificationTurnOn) await _updateFcmToken();
-        }
-      }
-      return response;
+      // response = await _dbService.loginWithGoogle(googleAuth.accessToken!);
+      // if (response.success!) {
+      //   if (response.success!) {
+      //     _localStorageService.setAccessToken = response.accessToken;
+      //     isNotificationTurnOn = _localStorageService.notificationFlag != null;
+      //     await _getUserProfile();
+      //     // if (isNotificationTurnOn) await _updateFcmToken();
+      //   }
+      // }
+      // return response;
     } catch (e) {
       print('Exception @sighupWithGoogle: $e');
     }
-    return response;
+    // return response;
   }
 
   loginWithFacebook() async {

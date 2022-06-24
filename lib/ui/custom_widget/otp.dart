@@ -7,8 +7,6 @@ import 'package:recrutment_help_app/core/constant/color.dart';
 import 'package:recrutment_help_app/core/models/auth_model/otp_model.dart';
 import 'package:recrutment_help_app/ui/custom_widget/down_elevated_btn.dart';
 
-import '../screens/otp_verification_screen/otp_verify_screen.dart';
-
 class FilledRoundedPinPut extends StatefulWidget {
   const FilledRoundedPinPut({Key? key}) : super(key: key);
 

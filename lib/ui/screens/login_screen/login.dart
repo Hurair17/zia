@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import 'package:recrutment_help_app/core/constant/color.dart';
-import 'package:recrutment_help_app/core/models/auth_model/signup_model.dart';
 import 'package:recrutment_help_app/ui/custom_widget/model_progress_hud.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_screen.dart';
 import 'package:recrutment_help_app/ui/screens/login_screen/login_view_model.dart';
