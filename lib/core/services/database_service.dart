@@ -81,6 +81,14 @@ class DatabaseService {
     return StringResponse.fromJson(response.data);
   }
 
+  Future<StringResponse> forgetPasswordOtpVerify(OtpModel body) async {
+    final RequestResponse response = await _apiServices.post(
+      url: '${EndPoints.baseUrl}${EndPoints.forgetPasswordOtpVerify}',
+      data: FormData.fromMap(body.toJson()),
+    );
+    return StringResponse.fromJson(response.data);
+  }
+
   Future<AuthResponse> loginWithFacebook(String accessToken) async {
     final RequestResponse response = await _apiServices.post(
       url: '${EndPoints.baseUrl}${EndPoints.loginWithFacebook}',

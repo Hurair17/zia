@@ -26,7 +26,6 @@ class OtpViewModel extends BaseViewModel {
       Get.to(() => const HomeScreen());
     } else {
       print("Sorry error occured=>${response.error.toString()}");
-      // print("OTP error occured=>${otpresponse.error.toString()}");
       Get.dialog(SignUpErrorDialog(
         errorMsg: response.error.toString(),
       ));

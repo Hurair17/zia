@@ -165,6 +165,22 @@ class AuthService {
     return response;
   }
 
+  forgetPasswordOtpVerify(OtpModel body) async {
+    late StringResponse response;
+    response = await _dbService.forgetPasswordOtpVerify(body);
+    if (response.success!) {
+      // this.userProfile = UserProfile.fromJson(body.toJson());
+      _localStorageService.setAccessToken =
+          response.accessToken; //updating access token
+      isNotificationTurnOn = _localStorageService.notificationFlag != null;
+      print('OTP REquest Screen ${response.success}');
+      // await _getUserProfile();
+
+      // await _updateFcmToken();
+    }
+    return response;
+  }
+
   // resetPassword(ResetPasswordBody body) async {
   //   final AuthResponse response = await _dbService.resetPassword(body);
   //   if (response.success) {

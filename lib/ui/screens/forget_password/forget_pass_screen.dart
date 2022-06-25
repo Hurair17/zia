@@ -76,6 +76,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                                 validation: model.emailValidation,
                                 onChanged: (val) {
                                   model.otpRequestModel.email = val;
+                                  model.otpModel.email = val;
                                 },
                               ),
                               SizedBox(
@@ -86,7 +87,8 @@ class ForgetPasswordScreen extends StatelessWidget {
                                   if (formKey.currentState!.validate()) {
                                     // Get.to(const OtpScreen());
                                     model.emailVerifiedOtpRequest();
-                                    print(model.otpRequestModel.email);
+                                    debugPrint(
+                                        '${model.otpModel.email} => ${model.otpRequestModel.email}');
                                   }
                                 },
                                 buttonText: 'Proceed',

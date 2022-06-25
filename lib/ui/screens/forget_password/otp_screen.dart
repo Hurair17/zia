@@ -161,6 +161,7 @@ class _FilledRoundedPinPutState extends State<FilledRoundedPinPut> {
                   onCompleted: (pin) {
                     // setState(() => showError = pin != '5555');
                     model.otpModel.otp = pin;
+                    model.otpVerification();
                   },
                   focusedPinTheme: defaultPinTheme.copyWith(
                     height: 68,
@@ -187,6 +188,7 @@ class _FilledRoundedPinPutState extends State<FilledRoundedPinPut> {
                 ontap: () async {
                   // Get.to(EmailVerifyScreen());
                   print('value = ${model.otpModel.otp}');
+                  model.otpVerification();
                 },
 
                 buttonText: 'Verify Code',

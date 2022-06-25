@@ -168,9 +168,6 @@ class _FilledRoundedPinPutState extends State<FilledRoundedPinPut> {
 
                     value.otpVerification();
                   },
-                  onChanged: (val) {
-                    // value.otpModel.otp = val;
-                  },
                   focusedPinTheme: defaultPinTheme.copyWith(
                     height: 68,
                     width: 64,
