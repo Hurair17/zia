@@ -7,9 +7,11 @@ import 'package:recrutment_help_app/core/models/auth_model/login_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/otp_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/otp_request_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/signup_model.dart';
+import 'package:recrutment_help_app/core/models/body/reset_password_body.dart';
 
 import '../../ui/custom_widget/dialoges/auth_dialoge.dart';
 import '../../ui/locator.dart';
+import '../models/auth_model/reset_password_model.dart';
 import '../models/other_model/user_profile.dart';
 import '../models/responses/auth_response.dart';
 import '../models/responses/base_response/string_response_model.dart';
@@ -169,14 +171,19 @@ class AuthService {
     late StringResponse response;
     response = await _dbService.forgetPasswordOtpVerify(body);
     if (response.success!) {
-      // this.userProfile = UserProfile.fromJson(body.toJson());
-      _localStorageService.setAccessToken =
-          response.accessToken; //updating access token
-      isNotificationTurnOn = _localStorageService.notificationFlag != null;
       print('OTP REquest Screen ${response.success}');
-      // await _getUserProfile();
+    }
+    return response;
+  }
 
-      // await _updateFcmToken();
+  resetPassword(ResetPasswordModel body) async {
+    late AuthResponse response;
+    response = await _dbService.resetPassword(body);
+    if (response.success!) {
+      _localStorageService.setAccessToken = response.accessToken;
+      isNotificationTurnOn = _localStorageService.notificationFlag != null;
+      // await _getUserProfile();
+      // if (isNotificationTurnOn) await _updateFcmToken();
     }
     return response;
   }

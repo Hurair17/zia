@@ -8,6 +8,7 @@ class EndPoints {
   static const otpVerify = "verifyUser";
   static const forgetPasswordOtpRequest = "forgot-password";
   static const forgetPasswordOtpVerify = "forgot-password/verify-user";
+  static const resetPassword = "reset-password";
 
   static const loginWithGoogle = '/login/google/callback';
   static const loginWithFacebook = '/login/facebook/callback';

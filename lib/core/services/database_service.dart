@@ -7,6 +7,7 @@ import 'package:recrutment_help_app/core/models/responses/base_response/base_res
 import 'package:recrutment_help_app/core/services/api_service.dart';
 
 import '../constant/api_end_point.dart';
+import '../models/auth_model/reset_password_model.dart';
 import '../models/body/reset_password_body.dart';
 import '../models/responses/auth_response.dart';
 import '../models/responses/base_response/request_response.dart';
@@ -49,13 +50,13 @@ class DatabaseService {
     return AuthResponse.fromJson(response.data);
   }
 
-  // Future<AuthResponse> otpRequest(OtpRequestModel body) async {
-  //   final RequestResponse response = await _apiServices.post(
-  //     url: '${EndPoints.baseUrl}${EndPoints.otpRequest}',
-  //     data: FormData.fromMap(body.toJson()),
-  //   );
-  //   return AuthResponse.fromJson(response.data);
-  // }
+  Future<AuthResponse> resetPassword(ResetPasswordModel body) async {
+    final RequestResponse response = await _apiServices.post(
+      url: '${EndPoints.baseUrl}${EndPoints.resetPassword}',
+      data: FormData.fromMap(body.toJson()),
+    );
+    return AuthResponse.fromJson(response.data);
+  }
 
   Future<StringResponse> otpRequest(OtpRequestModel body) async {
     final RequestResponse response = await _apiServices.post(

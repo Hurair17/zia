@@ -15,9 +15,9 @@ import 'otp_verify_screen.dart';
 
 class ForgetPassViewModel extends BaseViewModel {
   OtpRequestModel otpRequestModel = OtpRequestModel();
-  ResetPasswordModel resetPasswordModel = ResetPasswordModel();
   final AuthService _authService = AuthService();
   final otpModel = locator<OtpModel>();
+  final ResetPasswordModel resetPasswordModel = locator<ResetPasswordModel>();
   Logger log = Logger();
 
   String? emailValidation(String? value) {
@@ -62,20 +62,6 @@ class ForgetPassViewModel extends BaseViewModel {
     setState(ViewState.idle);
   }
 
-  // otpVerification() async {
-  //   setState(ViewState.loading);
-  //   log.e(otpModel.toJson());
-  //   // final otpresponse = await _authService.otpVerify(otpModel);
-  //   //   if (otpresponse.success) {
-  //   //     Get.to(const OtpScreen());
-  //   //   } else {
-  //   //     Get.dialog(SignUpErrorDialog(
-  //   //       errorMsg: otpresponse.error.toString(),
-  //   //     ));
-  //   //   }
-  //   //   setState(ViewState.idle);
-  // }
-
   otpVerification() async {
     log.d('This is emails ${otpModel.toJson()}');
 
@@ -87,6 +73,22 @@ class ForgetPassViewModel extends BaseViewModel {
       Get.to(() => const VerifyScreen());
     } else {
       print("Sorry error occured=>${response.error.toString()}");
+      Get.dialog(SignUpErrorDialog(
+        errorMsg: response.error.toString(),
+      ));
+    }
+    setState(ViewState.idle);
+    resetPasswordModel.email = otpModel.email;
+    resetPasswordModel.otp = otpModel.otp;
+  }
+
+  resetPassword() async {
+    log.e('This is reset password ${resetPasswordModel.toJson()}');
+    setState(ViewState.loading);
+    final response = await _authService.resetPassword(resetPasswordModel);
+    if (response.success) {
+      Get.offAllNamed('/login');
+    } else {
       Get.dialog(SignUpErrorDialog(
         errorMsg: response.error.toString(),
       ));
