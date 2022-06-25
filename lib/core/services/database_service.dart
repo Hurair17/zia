@@ -65,6 +65,14 @@ class DatabaseService {
     return StringResponse.fromJson(response.data);
   }
 
+  Future<StringResponse> emailVerifiedOtpRequest(OtpRequestModel body) async {
+    final RequestResponse response = await _apiServices.post(
+      url: '${EndPoints.baseUrl}${EndPoints.forgetPasswordOtpRequest}',
+      data: FormData.fromMap(body.toJson()),
+    );
+    return StringResponse.fromJson(response.data);
+  }
+
   Future<StringResponse> otpVerify(OtpModel body) async {
     final RequestResponse response = await _apiServices.post(
       url: '${EndPoints.baseUrl}${EndPoints.otpVerify}',

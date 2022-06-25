@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
@@ -18,7 +15,6 @@ import '../models/responses/auth_response.dart';
 import '../models/responses/base_response/string_response_model.dart';
 import '../models/responses/user_profile_responses.dart';
 import 'database_service.dart';
-import 'device_info_service.dart';
 import 'local_storage_services.dart';
 
 ///
@@ -41,7 +37,7 @@ import 'local_storage_services.dart';
 
 class AuthService {
   late bool isLogin;
-  late bool otpVerified;
+  // late bool otpVerified;
   final _localStorageService = locator<LocalStorageService>();
   final _dbService = locator<DatabaseService>();
   final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -60,7 +56,6 @@ class AuthService {
   ///
   doSetup() async {
     isLogin = _localStorageService.accessToken != null;
-    otpVerified = _localStorageService.otpAccessToken != null;
     if (isLogin) {
       isNotificationTurnOn = _localStorageService.notificationFlag != null;
       log.d('User is already logged-in');
@@ -103,7 +98,7 @@ class AuthService {
       // _localStorageService.setAccessToken =
       //     response.accessToken; //updating access token
       isNotificationTurnOn = _localStorageService.notificationFlag != null;
-      // await _getUserProfile();
+      await _getUserProfile();
 
       // await _updateFcmToken();
     }
@@ -113,6 +108,22 @@ class AuthService {
   otpRequest(OtpRequestModel body) async {
     late StringResponse response;
     response = await _dbService.otpRequest(body);
+    if (response.success!) {
+      // this.userProfile = UserProfile.fromJson(body.toJson());
+      _localStorageService.setOtpAccessToken =
+          response.accessToken; //updating access token
+      isNotificationTurnOn = _localStorageService.notificationFlag != null;
+      print('OTP REquest Screen ${response.success}');
+      // await _getUserProfile();
+
+      // await _updateFcmToken();
+    }
+    return response;
+  }
+
+  emailVerifiedOtpRequest(OtpRequestModel body) async {
+    late StringResponse response;
+    response = await _dbService.emailVerifiedOtpRequest(body);
     if (response.success!) {
       // this.userProfile = UserProfile.fromJson(body.toJson());
       _localStorageService.setOtpAccessToken =

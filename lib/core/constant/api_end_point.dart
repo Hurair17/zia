@@ -6,6 +6,7 @@ class EndPoints {
   static const resetpassword = "reset_password";
   static const otpRequest = "OTP-request";
   static const otpVerify = "verifyUser";
+  static const forgetPasswordOtpRequest = "forgot-password";
 
   static const loginWithGoogle = '/login/google/callback';
   static const loginWithFacebook = '/login/facebook/callback';

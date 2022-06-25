@@ -97,7 +97,8 @@ class SignUpViewModel extends BaseViewModel {
         Get.dialog(SignUpErrorDialog(
           errorMsg: response.error.toString(),
         ));
-      } else {
+      }
+      if (!otpresponse.success) {
         Get.dialog(SignUpErrorDialog(
           errorMsg: otpresponse.error.toString(),
         ));

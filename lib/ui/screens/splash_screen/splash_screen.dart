@@ -110,12 +110,14 @@ class _SplashPageState extends State<SplashPage> {
 
     ///checking if the user is login or not
     print('Login State: ${_authService.isLogin}');
-    print('Login State: ${_authService.otpVerified}');
+    // print('Login State: ${_authService.otpVerified}');
     if (_authService.isLogin) {
       Get.offAll(() => HomeScreen());
-    } else if (_authService.otpVerified) {
-      Get.to(() => const OtpScreenVerify());
-    } else {
+    }
+    // else if (_authService.otpVerified) {
+    //   Get.to(() => const OtpScreenVerify());
+    // }
+    else {
       await Future.delayed(const Duration(seconds: 3), () {
         Get.offAll(() => LoginScreen());
       });
