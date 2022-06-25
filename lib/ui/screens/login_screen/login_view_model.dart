@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:get/get.dart';
@@ -15,10 +16,12 @@ import '../../../core/models/responses/auth_response.dart';
 import '../../../core/other/base_view_model.dart';
 import '../../../core/services/auth_service.dart';
 import '../../custom_widget/dialoges/signup_error_dialoge.dart';
+import '../../locator.dart';
 
 class LoginViewModel extends BaseViewModel {
   LogInModel logInModel = LogInModel();
   AuthService _authService = AuthService();
+  final deviceInfoService = locator<DeviceInfoPlugin>();
 
   String? emailValidation(String? value) {
     if (value!.isEmpty) {

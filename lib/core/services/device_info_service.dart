@@ -13,4 +13,14 @@ class DeviceInfoService {
       return androidDeviceInfo.androidId; // unique ID on Android
     }
   }
+
+  // Future<String> getDeviceName() async {
+  //   if (Platform.isIOS) {
+  //     var iosDeviceInfo = await deviceInfo.iosInfo;
+  //     return iosDeviceInfo.name; // unique ID on iOS
+  //   } else {
+  //     var androidDeviceInfo = await deviceInfo.androidInfo;
+  //     return androidDeviceInfo.model; // unique ID on Android
+  //   }
+  // }
 }

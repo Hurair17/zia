@@ -1,3 +1,4 @@
+import 'package:device_info/device_info.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import 'package:recrutment_help_app/core/services/database_service.dart';
@@ -14,6 +15,8 @@ setupLocator() async {
   // locator.registerSingleton(_instance);
   locator.registerSingleton<OtpModel>(OtpModel());
   locator.registerSingleton<ResetPasswordModel>(ResetPasswordModel());
+  locator.registerSingleton<DeviceInfoPlugin>(DeviceInfoPlugin());
+
   locator.registerSingleton<LocalStorageService>(LocalStorageService());
   locator.registerLazySingleton<DatabaseService>(() => DatabaseService());
   locator.registerSingleton<AuthService>(AuthService());

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -129,35 +131,46 @@ class LoginScreen extends StatelessWidget {
                             height: 26.h,
                           ),
                           //Social Auth Buttons
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                LoginScreenEvletedBtnForSocialSites(
-                                  ontap: () async {
-                                    // value.loginWithGoogle();
-                                    print('valida');
-                                    value.loginWithSocial(SocialAuthType.apple);
-                                  },
-                                  path: 'assets/icons/apple.svg',
-                                ),
-                                LoginScreenEvletedBtnForSocialSites(
-                                  ontap: () async {
-                                    print('Google');
-                                    value
-                                        .loginWithSocial(SocialAuthType.google);
-                                  },
-                                  path: 'assets/icons/google.svg',
-                                ),
-                                LoginScreenEvletedBtnForSocialSites(
-                                  ontap: () async {
-                                    print('Facebook');
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  if (Platform.isIOS)
+                                    LoginScreenEvletedBtnForSocialSites(
+                                      ontap: () async {
+                                        // value.loginWithGoogle();
+                                        print('valida');
+                                        value.loginWithSocial(
+                                            SocialAuthType.apple);
+                                      },
+                                      path: 'assets/icons/apple.svg',
+                                    ),
+                                  SizedBox(
+                                    width: 15.w,
+                                  ),
+                                  LoginScreenEvletedBtnForSocialSites(
+                                    ontap: () async {
+                                      print('Google');
+                                      value.loginWithSocial(
+                                          SocialAuthType.google);
+                                    },
+                                    path: 'assets/icons/google.svg',
+                                  ),
+                                  SizedBox(
+                                    width: 15.w,
+                                  ),
+                                  LoginScreenEvletedBtnForSocialSites(
+                                    ontap: () async {
+                                      print('Facebook');
 
-                                    value.loginWithSocial(
-                                        SocialAuthType.facebook);
-                                  },
-                                  path: 'assets/icons/facebook.svg',
-                                ),
-                              ]),
+                                      value.loginWithSocial(
+                                          SocialAuthType.facebook);
+                                    },
+                                    path: 'assets/icons/facebook.svg',
+                                  ),
+                                ]),
+                          ),
                           SizedBox(
                             height: 43.h,
                           ),
