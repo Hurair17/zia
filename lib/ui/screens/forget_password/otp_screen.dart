@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_view_model.dart';
-import 'package:recrutment_help_app/ui/screens/forget_password/otp_verify_screen.dart';
 
 import '../../../core/constant/color.dart';
 import '../../custom_widget/down_elevated_btn.dart';
@@ -187,7 +185,7 @@ class _FilledRoundedPinPutState extends State<FilledRoundedPinPut> {
                 // formKey: formKey,
                 ontap: () async {
                   // Get.to(EmailVerifyScreen());
-                  print('value = ${model.otpModel.otp}');
+                  debugPrint('value = ${model.otpModel.otp}');
                   model.otpVerification();
                 },
 

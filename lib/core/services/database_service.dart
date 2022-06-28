@@ -3,12 +3,10 @@ import 'package:recrutment_help_app/core/models/auth_model/login_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/otp_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/otp_request_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/signup_model.dart';
-import 'package:recrutment_help_app/core/models/responses/base_response/base_response.dart';
 import 'package:recrutment_help_app/core/services/api_service.dart';
 
 import '../constant/api_end_point.dart';
 import '../models/auth_model/reset_password_model.dart';
-import '../models/body/reset_password_body.dart';
 import '../models/responses/auth_response.dart';
 import '../models/responses/base_response/request_response.dart';
 import '../models/responses/base_response/string_response_model.dart';
@@ -50,12 +48,12 @@ class DatabaseService {
     return AuthResponse.fromJson(response.data);
   }
 
-  Future<AuthResponse> resetPassword(ResetPasswordModel body) async {
+  Future<StringResponse> resetPassword(ResetPasswordModel body) async {
     final RequestResponse response = await _apiServices.post(
       url: '${EndPoints.baseUrl}${EndPoints.resetPassword}',
       data: FormData.fromMap(body.toJson()),
     );
-    return AuthResponse.fromJson(response.data);
+    return StringResponse.fromJson(response.data);
   }
 
   Future<StringResponse> otpRequest(OtpRequestModel body) async {

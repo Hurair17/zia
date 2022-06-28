@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorageService {
@@ -25,15 +26,15 @@ class LocalStorageService {
   set setNotificationsCount(int count) =>
       _saveToDisk(notificationsCountKey, count);
 
-  dynamic get accessToken => _getFromDisk(accessTokenKey) ?? null;
+  dynamic get accessToken => _getFromDisk(accessTokenKey);
   set setAccessToken(String? token) => _saveToDisk(accessTokenKey, token);
 
-  dynamic get otpAccessToken => _getFromDisk(otpScreenKey) ?? null;
+  dynamic get otpAccessToken => _getFromDisk(otpScreenKey);
   set setOtpAccessToken(String? token) => _saveToDisk(otpScreenKey, token);
 
-  dynamic get refreshToken => _getFromDisk(refreshTokenKey) ?? null;
+  dynamic get refreshToken => _getFromDisk(refreshTokenKey);
 
-  dynamic get notificationFlag => _getFromDisk(notificationKey) ?? null;
+  dynamic get notificationFlag => _getFromDisk(notificationKey);
   set setNotificationFlag(String? isTurnOn) =>
       _saveToDisk(notificationKey, isTurnOn);
 
@@ -43,7 +44,8 @@ class LocalStorageService {
 
   dynamic _getFromDisk(String key) {
     var value = _preferences?.get(key);
-    print('(TRACE) LocalStorageService:_getFromDisk. key: $key value: $value');
+    debugPrint(
+        '(TRACE) LocalStorageService:_getFromDisk. key: $key value: $value');
     return value;
   }
 
@@ -59,7 +61,8 @@ class LocalStorageService {
   }
 
   void _saveToDisk<T>(String key, T content) {
-    print('(TRACE) LocalStorageService:_saveToDisk. key: $key value: $content');
+    debugPrint(
+        '(TRACE) LocalStorageService:_saveToDisk. key: $key value: $content');
 
     if (content is String) {
       _preferences?.setString(key, content);
@@ -82,12 +85,8 @@ class LocalStorageService {
   }
 
   static Future<LocalStorageService> getinstance() async {
-    if (_instance == null) {
-      _instance = LocalStorageService();
-    }
-    if (_preferences == null) {
-      _preferences = await SharedPreferences.getInstance();
-    }
+    _instance ??= LocalStorageService();
+    _preferences ??= await SharedPreferences.getInstance();
     return _instance!;
   }
 }

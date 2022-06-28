@@ -7,7 +7,7 @@ class CancelButton extends StatelessWidget {
   final double iconHeight;
   final double iconWidth;
   final onTap;
-  CancelButton({
+  const CancelButton({
     this.size = 27,
     this.iconHeight = 23,
     this.iconWidth = 12,
@@ -21,7 +21,7 @@ class CancelButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: this.onTap ??
+      onTap: onTap ??
           () {
             Get.back();
           },
@@ -36,7 +36,7 @@ class CancelButton extends StatelessWidget {
               color: Colors.grey.withOpacity(0.5),
               blurRadius: 8, // has the effect of softening the shadow
               spreadRadius: 1.2, // has the effect of extending the shadow
-              offset: Offset(
+              offset: const Offset(
                 0, // horizontal, move right 10
                 0.4, // vertical, move down 10
               ),
@@ -45,7 +45,7 @@ class CancelButton extends StatelessWidget {
         ),
         alignment: Alignment.topCenter,
         child: Column(
-          children: [
+          children: const [
             // ImageContainer(
             //   assetImage: "$assets/x.png",
             //   height: this.iconHeight, //23,

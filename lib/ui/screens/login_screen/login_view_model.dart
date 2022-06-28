@@ -1,15 +1,9 @@
-import 'dart:convert';
-
 import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:get/get.dart';
-import 'package:http/http.dart';
-import 'package:recrutment_help_app/core/constant/api_end_point.dart';
 import 'package:recrutment_help_app/core/enum/view_state.dart';
 import 'package:recrutment_help_app/core/models/auth_model/login_model.dart';
 import 'package:recrutment_help_app/ui/screens/home/home_screen.dart';
-import 'package:recrutment_help_app/ui/screens/login_screen/login.dart';
 
 import '../../../core/enum/social_auth_type.dart';
 import '../../../core/models/responses/auth_response.dart';
@@ -20,7 +14,7 @@ import '../../locator.dart';
 
 class LoginViewModel extends BaseViewModel {
   LogInModel logInModel = LogInModel();
-  AuthService _authService = AuthService();
+  final AuthService _authService = AuthService();
   final deviceInfoService = locator<DeviceInfoPlugin>();
 
   String? emailValidation(String? value) {
@@ -72,11 +66,11 @@ class LoginViewModel extends BaseViewModel {
 
     response = await _authService.loginWithEmailAndPassword(logInModel);
     if (response.success!) {
-      print("Login user successfully");
+      debugPrint("Login user successfully");
       // clear();
-      Get.offAll(() => HomeScreen());
+      Get.offAll(() => const HomeScreen());
     } else {
-      print("Sorry error occured=>${response.error.toString()}");
+      debugPrint("Sorry error occured=>${response.error.toString()}");
       Get.dialog(SignUpErrorDialog(
         errorMsg: response.error.toString(),
       ));
@@ -95,11 +89,11 @@ class LoginViewModel extends BaseViewModel {
     }
 
     if (response.success!) {
-      print("Login user successfully");
+      debugPrint("Login user successfully");
       // clear();
-      Get.offAll(() => HomeScreen());
+      Get.offAll(() => const HomeScreen());
     } else {
-      print("Sorry error occured=>${response.error.toString()}");
+      debugPrint("Sorry error occured=>${response.error.toString()}");
       Get.dialog(SignUpErrorDialog(
         errorMsg: response.error.toString(),
       ));

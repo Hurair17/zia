@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recrutment_help_app/ui/screens/login_screen/login.dart';
-import 'package:recrutment_help_app/ui/screens/login_screen/login_view_model.dart';
 
 import '../../core/constant/color.dart';
 
 class DownElevetedButton extends StatelessWidget {
-  DownElevetedButton({
+  const DownElevetedButton({
     Key? key,
     this.buttonText,
     this.ontap,

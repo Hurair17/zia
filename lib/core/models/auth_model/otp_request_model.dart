@@ -4,6 +4,6 @@ class OtpRequestModel {
   OtpRequestModel({this.email});
 
   toJson() => {
-        'email': this.email,
+        'email': email,
       };
 }

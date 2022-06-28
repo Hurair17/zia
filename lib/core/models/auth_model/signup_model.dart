@@ -21,12 +21,12 @@ class SignUpModel {
       );
 
   toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.fullName;
-    data['email'] = this.email;
-    data['password'] = this.password;
-    data['password_confirmation'] = this.confirmpassword;
-    data['token'] = this.token;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = fullName;
+    data['email'] = email;
+    data['password'] = password;
+    data['password_confirmation'] = confirmpassword;
+    data['token'] = token;
 
     return data;
   }

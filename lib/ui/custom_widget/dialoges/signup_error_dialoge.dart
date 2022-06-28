@@ -9,11 +9,11 @@ import '../rounded_button.dart';
 class SignUpErrorDialog extends StatelessWidget {
   final errorMsg;
   final ontap;
-  SignUpErrorDialog({this.errorMsg, this.ontap});
+  const SignUpErrorDialog({this.errorMsg, this.ontap});
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      insetPadding: EdgeInsets.only(left: 67, right: 67),
+      insetPadding: const EdgeInsets.only(left: 67, right: 67),
       backgroundColor: Colors.transparent,
       child: Container(
         height: 200.1.h,
@@ -52,7 +52,7 @@ class SignUpErrorDialog extends StatelessWidget {
                 ),
               ),
               //button
-              Container(
+              SizedBox(
                 height: 30.h,
                 width: 113.w,
                 child: RoundedButton(

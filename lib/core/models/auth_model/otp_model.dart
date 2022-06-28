@@ -7,7 +7,7 @@ class OtpModel {
   });
 
   toJson() => {
-        'OTP': this.otp,
-        'email': this.email,
+        'OTP': otp,
+        'email': email,
       };
 }

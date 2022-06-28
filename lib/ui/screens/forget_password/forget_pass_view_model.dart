@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:recrutment_help_app/core/models/auth_model/reset_password_model.dart';
 import 'package:recrutment_help_app/core/other/base_view_model.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/otp_screen.dart';
+import 'package:recrutment_help_app/ui/screens/login_screen/login.dart';
 
 import '../../../core/enum/view_state.dart';
 import '../../../core/models/auth_model/otp_model.dart';
@@ -87,7 +87,8 @@ class ForgetPassViewModel extends BaseViewModel {
     setState(ViewState.loading);
     final response = await _authService.resetPassword(resetPasswordModel);
     if (response.success) {
-      Get.offAllNamed('/login');
+      // Get.offAllNamed('/login');
+      Get.offAll(LoginScreen());
     } else {
       Get.dialog(SignUpErrorDialog(
         errorMsg: response.error.toString(),

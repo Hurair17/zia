@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:recrutment_help_app/ui/custom_widget/model_progress_hud.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_view_model.dart';
-import 'package:recrutment_help_app/ui/screens/forget_password/password_success_change_screen.dart';
 
 import '../../../core/constant/color.dart';
 import '../../../core/enum/view_state.dart';

@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import 'package:recrutment_help_app/ui/custom_widget/model_progress_hud.dart';
 import 'package:recrutment_help_app/ui/screens/forget_password/forget_pass_view_model.dart';
-import 'package:recrutment_help_app/ui/screens/forget_password/otp_screen.dart';
 
 import '../../../core/constant/color.dart';
 import '../../../core/enum/view_state.dart';
-import '../../../core/models/auth_model/otp_model.dart';
 import '../../custom_widget/down_elevated_btn.dart';
 import '../../custom_widget/top_svg_design.dart';
 import '../../custom_widget/user_info_txt_form_field.dart';

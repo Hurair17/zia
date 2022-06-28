@@ -7,7 +7,6 @@ import 'package:recrutment_help_app/core/models/auth_model/login_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/otp_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/otp_request_model.dart';
 import 'package:recrutment_help_app/core/models/auth_model/signup_model.dart';
-import 'package:recrutment_help_app/core/models/body/reset_password_body.dart';
 
 import '../../ui/custom_widget/dialoges/auth_dialoge.dart';
 import '../../ui/locator.dart';
@@ -72,11 +71,11 @@ class AuthService {
     UserProfileResponse response = await _dbService.getUserProfile();
     if (response.success!) {
       final userProfile = response.profile;
-      print('Got User Data: ${userProfile!.toJson()}');
+      debugPrint('Got User Data: ${userProfile!.toJson()}');
     } else {
-      //TODO: Update the design of success dialogue according to the app design.
+      //Update the design of success dialogue according to the app design.
       Get.dialog(AuthDialog(title: 'Response', message: response.error!));
-      print('Pakisatan: ${response.error}');
+      debugPrint('Pakisatan: ${response.error}');
     }
   }
 
@@ -115,7 +114,7 @@ class AuthService {
       _localStorageService.setOtpAccessToken =
           response.accessToken; //updating access token
       isNotificationTurnOn = _localStorageService.notificationFlag != null;
-      print('OTP REquest Screen ${response.success}');
+      debugPrint('OTP REquest Screen ${response.success}');
       // await _getUserProfile();
 
       // await _updateFcmToken();
@@ -131,7 +130,7 @@ class AuthService {
       _localStorageService.setOtpAccessToken =
           response.accessToken; //updating access token
       isNotificationTurnOn = _localStorageService.notificationFlag != null;
-      print('OTP REquest Screen ${response.success}');
+      debugPrint('OTP REquest Screen ${response.success}');
       // await _getUserProfile();
 
       // await _updateFcmToken();
@@ -147,7 +146,7 @@ class AuthService {
       _localStorageService.setAccessToken =
           response.accessToken; //updating access token
       isNotificationTurnOn = _localStorageService.notificationFlag != null;
-      print('OTP REquest Screen ${response.success}');
+      debugPrint('OTP REquest Screen ${response.success}');
       // await _getUserProfile();
 
       // await _updateFcmToken();
@@ -171,17 +170,17 @@ class AuthService {
     late StringResponse response;
     response = await _dbService.forgetPasswordOtpVerify(body);
     if (response.success!) {
-      print('OTP REquest Screen ${response.success}');
+      debugPrint('OTP REquest Screen ${response.success}');
     }
     return response;
   }
 
   resetPassword(ResetPasswordModel body) async {
-    late AuthResponse response;
+    late StringResponse response;
     response = await _dbService.resetPassword(body);
     if (response.success!) {
-      _localStorageService.setAccessToken = response.accessToken;
-      isNotificationTurnOn = _localStorageService.notificationFlag != null;
+      // _localStorageService.setAccessToken = response.accessToken;
+      // isNotificationTurnOn = _localStorageService.notificationFlag != null;
       // await _getUserProfile();
       // if (isNotificationTurnOn) await _updateFcmToken();
     }
@@ -207,8 +206,8 @@ class AuthService {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       final GoogleSignInAuthentication googleAuth =
           await googleUser!.authentication;
-      debugPrint('accessToken => ' + googleAuth.accessToken!);
-      debugPrint('idToken => ' + googleAuth.idToken!);
+      debugPrint('accessToken => ${googleAuth.accessToken!}');
+      debugPrint('idToken => ${googleAuth.idToken!}');
       // response = await _dbService.loginWithGoogle(googleAuth.accessToken!);
       // if (response.success!) {
       //   if (response.success!) {
@@ -220,7 +219,7 @@ class AuthService {
       // }
       // return response;
     } catch (e) {
-      print('Exception @sighupWithGoogle: $e');
+      debugPrint('Exception @sighupWithGoogle: $e');
     }
     // return response;
   }
@@ -230,7 +229,7 @@ class AuthService {
     try {
       final LoginResult result = await _facebookLogin.login();
       final AccessToken accessToken = result.accessToken!;
-      print("Facebook access token => ${accessToken.token}");
+      debugPrint("Facebook access token => ${accessToken.token}");
       response = await _dbService.loginWithFacebook(accessToken.token);
       if (response.success!) {
         _localStorageService.setAccessToken = response.accessToken;
@@ -240,7 +239,7 @@ class AuthService {
       }
       return response;
     } catch (e) {
-      print('Exception @loginWithFacebook: $e');
+      debugPrint('Exception @loginWithFacebook: $e');
     }
     return response;
   }

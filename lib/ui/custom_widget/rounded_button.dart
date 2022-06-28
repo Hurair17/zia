@@ -9,29 +9,32 @@ class RoundedButton extends StatelessWidget {
   final verticalPadding;
   final double? textSize;
 
-  RoundedButton(
-      {@required this.text,
+  const RoundedButton(
+      {Key? key,
+      @required this.text,
       @required this.onPressed,
       this.textColor,
       this.verticalPadding,
       this.textSize = 20,
-      this.color});
+      this.color})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FlatButton(
       colorBrightness: Brightness.light,
-      textColor: this.textColor,
+      textColor: textColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
-      color: this.color,
+      color: color,
+      onPressed: onPressed,
       child: Padding(
-        padding: this.verticalPadding != null
+        padding: verticalPadding != null
             ? EdgeInsets.only(
-                top: this.verticalPadding.toDouble(),
-                bottom: this.verticalPadding.toDouble())
-            : EdgeInsets.symmetric(vertical: 10.0),
+                top: verticalPadding.toDouble(),
+                bottom: verticalPadding.toDouble())
+            : const EdgeInsets.symmetric(vertical: 10.0),
         child: Text(
           text,
           textAlign: TextAlign.center,
@@ -42,7 +45,6 @@ class RoundedButton extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: onPressed,
     );
   }
 }

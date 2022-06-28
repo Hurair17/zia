@@ -9,6 +9,6 @@ class StringResponse extends BaseResponse {
 
   /// Named Constructor
   StringResponse.fromJson(json) : super.fromJson(json) {
-    if (json['body'] != null) this.accessToken = json['body'];
+    if (json['body'] != null) accessToken = json['body'];
   }
 }

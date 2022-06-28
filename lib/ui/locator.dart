@@ -1,6 +1,5 @@
 import 'package:device_info/device_info.dart';
 import 'package:get_it/get_it.dart';
-import 'package:logger/logger.dart';
 import 'package:recrutment_help_app/core/services/database_service.dart';
 
 import '../core/models/auth_model/otp_model.dart';

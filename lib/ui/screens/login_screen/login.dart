@@ -108,7 +108,6 @@ class LoginScreen extends StatelessWidget {
                             buttonText: 'Login',
                             ontap: () async {
                               if (formKey.currentState!.validate()) {
-                                print('valida');
                                 value.loginWithEmailPassword();
                               }
                             },
@@ -140,7 +139,7 @@ class LoginScreen extends StatelessWidget {
                                     LoginScreenEvletedBtnForSocialSites(
                                       ontap: () async {
                                         // value.loginWithGoogle();
-                                        print('valida');
+
                                         value.loginWithSocial(
                                             SocialAuthType.apple);
                                       },
@@ -151,7 +150,6 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                   LoginScreenEvletedBtnForSocialSites(
                                     ontap: () async {
-                                      print('Google');
                                       value.loginWithSocial(
                                           SocialAuthType.google);
                                     },
@@ -162,8 +160,6 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                   LoginScreenEvletedBtnForSocialSites(
                                     ontap: () async {
-                                      print('Facebook');
-
                                       value.loginWithSocial(
                                           SocialAuthType.facebook);
                                     },

@@ -52,13 +52,13 @@ class UserProfile {
   }
 
   toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['full_name'] = this.name;
-    data['email'] = this.email;
-    data['role_id'] = this.roleId;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['full_name'] = name;
+    data['email'] = email;
+    data['role_id'] = roleId;
     // data['age'] = this.age;
     // data['fcmToken'] = this.fcmToken;
-    data['phone_number'] = this.phone;
+    data['phone_number'] = phone;
     // data['image_url'] = this.imageUrl != null
     //     ? await dio.MultipartFile.fromFile(this.imageUrl!)
     //     : null;
@@ -68,15 +68,15 @@ class UserProfile {
   }
 
   toJson2() async {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['email'] = this.email;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['email'] = email;
     // data['role_id'] = this.roleId;
     // data['age'] = this.age;
     // data['fcmToken'] = this.fcmToken;
-    data['phone_number'] = this.phone;
-    data['image_url'] = this.fileImage != null
-        ? await dio.MultipartFile.fromFile(this.fileImage!.path)
+    data['phone_number'] = phone;
+    data['image_url'] = fileImage != null
+        ? await dio.MultipartFile.fromFile(fileImage!.path)
         : null;
     // data['gender'] = this.gender;
     // data['location'] = this.location;
@@ -85,12 +85,12 @@ class UserProfile {
 
   deepCopy() {
     return UserProfile(
-        name: this.name,
-        email: this.email,
-        fcmToken: this.fcmToken,
-        phone: this.phone,
-        imageUrl: this.imageUrl,
-        gender: this.gender,
-        location: this.location);
+        name: name,
+        email: email,
+        fcmToken: fcmToken,
+        phone: phone,
+        imageUrl: imageUrl,
+        gender: gender,
+        location: location);
   }
 }
